@@ -1,3 +1,4 @@
+<!--메인화면 페이지-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,11 +8,14 @@
     <body>
         <header>
             <nav>
-                <a href="./mainPage.html">로고</a><!--클릭시 메인페이지로 이동-->
+
+                <a href="../mainPage.html">로고
+                    <img src="data:," alt="Place_For_Logo_Ha_Ha">
+                </a><!--클릭시 메인페이지로 이동-->
                 <a href="">모집보기</a><!--모집글 보는 리스트로 이동-->
                 <a href="">모집하기</a><!--모집글 작성하는 페이지로 이동-->
 
-                <span id="flip">notice</span><!--클릭시 공지사항 자유게시판이 나옴 클릭시 밑의 게시판 2개가 나옴-->
+                <span id="flip">notice</span><!--클릭시 공지사항 자유게시판이 나옴-->
                 <a href="" style="display:none;">자유게시판</div>
                 <a href="" style="display:none;">공지사항</div>
                     
@@ -22,8 +26,44 @@
         </header>
 
         <section>
+                
+                
+
             <article><!--검색창과 카테고리 이미지 나올곳-->
                 <input type="search" placeholder="검색어를 입력해주세요">
+                <!--Container class for slideshow-->
+                <div class="slideshow_container">
+
+                    <div class="mySlideFade">
+                    <div class="numbertext">1/3</div>
+                    <img src="data:," style="width:100">
+                    <div class="text">Caption text</div>
+                </div>
+
+                <div class="mySlideFade">
+                    <div class="numbertext">2/3</div>
+                    <img src="data:," style="width:100">
+                    <div class="text">Caption text</div>
+                </div>
+
+                <div class="mySlideFade">
+                    <div class="numbertext">3/3</div>
+                    <img src="data:," style="width:100">
+                    <div class="text">Caption text</div>
+                </div>
+
+                <!--Full_Width webpage??-->
+                
+                <!--Next and previous page-->
+                <a class="prev" onclick="plusSlide(-1)">&#10094;</a>
+                <a class= "next" onclick="plusSlide(1)">&#10095;</a>
+                </div>
+                <br>
+                <div style="text-align:center;">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                </div>
             </article>
 
             <article><!--인기순 조회순 등의 순으로 모집글이 나올곳-->
