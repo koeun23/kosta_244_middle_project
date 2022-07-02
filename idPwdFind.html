@@ -8,10 +8,12 @@
 		<script src=""></script>
     </head>
     <style>
-        div {
+        div.all {
         width: 80%;
         height: 500px;
         border: 1px solid;
+        margin-right:10%;
+        margin-left:10%;
         }
         div.findId {
         width: 50%;
@@ -28,12 +30,22 @@
             height:20px; 
             border:none;
         }
+        div #idFindBtn{
+        	position:relative;
+        	float:right;
+        	top:300px;
+        }
+        div #pwdFindBtn{
+        	position:relative;
+        	float:right;
+        	top:260px;
+        }
     </style>
     <body>
     	 <header>
             <nav>
 
-                <a href="./mainPage.html">로고
+                <a href="./mainpage.html">로고
                     <img src="data:," alt="Place_For_Logo_Ha_Ha">
                 </a><!--클릭시 메인페이지로 이동-->
                 <a href="./idPwdFind.html">모집보기</a><!--모집글 보는 리스트로 이동-->
@@ -49,14 +61,14 @@
             </nav>
         </header>
     	
-        <div>
+        <div class="all">
             <div class="findId">
               <h1>아이디 찾기</h1>
               <div>이름</div>
               <input type="text" placeholder="이름을 입력하세요">
               <div>이메일</div>
               <input type="email" placeholder="이메일을 입력하세요">
-              <button type="submit">아이디 찾기</button>
+              <button type="submit" id="idFindBtn">아이디 찾기</button>
             </div>
             <div class="findPwd">
               <h1>비밀번호 찾기</h1>
@@ -66,7 +78,7 @@
               <input type="email" placeholder="아이디를 입력하세요">
               <div>이메일</div>
               <input type="email" placeholder="이메일을 입력하세요">
-              <button type="submit">비밀번호 찾기</button>
+              <button type="submit" id="pwdFindBtn">비밀번호 찾기</button>
             </div>
           </div>
           
