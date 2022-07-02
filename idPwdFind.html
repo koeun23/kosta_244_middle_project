@@ -1,1 +1,86 @@
-<!--아이디 비밀번호 찾기 페이지-->
+<!--아이디 비밀번호 찾기 페이지--> 
+<!--용욱-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src=""></script>
+    </head>
+    <style>
+        div {
+        width: 80%;
+        height: 500px;
+        border: 1px solid;
+        }
+        div.findId {
+        width: 50%;
+        float: left;
+        box-sizing: border-box;
+        }
+        div.findPwd {
+        width: 50%;
+        float: right;
+        box-sizing: border-box;
+        }
+        div div{
+            width:60px; 
+            height:20px; 
+            border:none;
+        }
+    </style>
+    <body>
+    	 <header>
+            <nav>
+
+                <a href="./mainPage.html">로고
+                    <img src="data:," alt="Place_For_Logo_Ha_Ha">
+                </a><!--클릭시 메인페이지로 이동-->
+                <a href="./idPwdFind.html">모집보기</a><!--모집글 보는 리스트로 이동-->
+                <a href="">모집하기</a><!--모집글 작성하는 페이지로 이동-->
+
+                <span id="flip">notice</span><!--클릭시 공지사항 자유게시판이 나옴-->
+                <a href="" style="display:none;">자유게시판</div>
+                <a href="" style="display:none;">공지사항</div>
+                    
+                <a href="" style="display:none;">공지</a><!--로그인시에만 보이고 글쓴이가 댓글이 올때 알람이 오게끔-->
+                <a href="" style="display:none;">마이페이지</a><!--로그인시에만 보임-->
+                <a href="">로그인</a><!--로그인 시에는 로그아웃으로 바뀜-->
+            </nav>
+        </header>
+    	
+        <div>
+            <div class="findId">
+              <h1>아이디 찾기</h1>
+              <div>이름</div>
+              <input type="text" placeholder="이름을 입력하세요">
+              <div>이메일</div>
+              <input type="email" placeholder="이메일을 입력하세요">
+              <button type="submit">아이디 찾기</button>
+            </div>
+            <div class="findPwd">
+              <h1>비밀번호 찾기</h1>
+              <div>이름</div>
+              <input type="text" placeholder="이름을 입력하세요">
+              <div>아이디</div>
+              <input type="email" placeholder="아이디를 입력하세요">
+              <div>이메일</div>
+              <input type="email" placeholder="이메일을 입력하세요">
+              <button type="submit">비밀번호 찾기</button>
+            </div>
+          </div>
+          
+        <footer><!--회사정보가 나올곳 ex) copyright-->
+            <aside>
+                <a class="" href="">개인정보처리방침</a>
+                <ul class="copy_menu">
+                    <li>사업자등록번호 : XXXX</li>
+                    <li>(주)사람모집</li>
+                    <li>TEL : 1522-1234</li>
+                    <li><address>test@kosta.com</address></li>
+                </ul>
+                <span class="en">ⓒ 2021 saram mozip Company. All Rights Reserved.</span>
+            </aside>
+        </footer>
+    </body>
+</html>
