@@ -45,7 +45,9 @@ public class IdFindServlet extends HttpServlet {
 			pstmt.setString(2, id);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {//입력한 정보와 일치하는 회원정보가 있으면 id값을 알려주자
-				result="{\"status\":1}";
+				String customerId = rs.getString("id");//DB에 저장되어 있는 회원 아이디를 찾고
+				out.print(customerId);//클라이언트에게 아이디 출력
+				result="{\"status\":1}";//성공했다는 의미
 			}else {
 				
 			}
@@ -59,5 +61,3 @@ public class IdFindServlet extends HttpServlet {
 	}
 
 }
-
-
