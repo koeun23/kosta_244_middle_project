@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.my.sql.MyConnection;
 
@@ -26,6 +27,7 @@ public class PwdFindServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");//ISO_88859_1
 		PrintWriter out=response.getWriter();//응답출력스트림 얻기
+		HttpSession session=request.getSession();
 		
 		String name=request.getParameter("name");
 		String id=request.getParameter("id");
@@ -48,8 +50,9 @@ public class PwdFindServlet extends HttpServlet {
 			rs=pstmt.executeQuery();
 			if(rs.next()) {//입력한 정보와 일치하는 회원정보가 있으면 로그인 된 상태로 만들자 
 				result="{\"status\":1}";
-			}else {
-				
+				session.setAttribute("loginInfo", id);
+			}else {//입력한 정보와 일치하는 회원정보가 없다면
+				result="{\"status\":0}";
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

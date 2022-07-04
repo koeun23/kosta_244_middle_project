@@ -1,7 +1,7 @@
 $(function(){
 	//아이디 찾기 버튼을 눌렀을 때 발생할 이벤트
 	$('button.idFindBtn').click(function(){
-		let url='';//회원정보가 있는 back의 주소로
+		let url='http://';//아이디가 있는 back의 주소로
 		
   		//--이름과 이메일 입력 객체를 찾아서
   		let $inputName = $("div.findId input[name=name]");
@@ -20,8 +20,8 @@ $(function(){
 			data: data,
 			success: function(jsonObj){
 				if(jsonObj.status==1){
-					//회원정보 데이터 중 일치하는 것이 있다!
-					alert();//회원정보에 있는 id값을 알람으로 보여주자
+					//회원정보 데이터 중 일치하는 것이 있으면
+					//회원정보에 있는 id값을 알람으로 보여주자
 				}
 				else{
 					//입력한 이메일과 이름으로 회원정보에 있는 데이터랑 일치하는 것이 없어요
@@ -60,8 +60,8 @@ $(function(){
 			data:data,
 			success:function(jsonObj){
 				if(jsonObj.status==1){
-					//해당 회원정보로 로그인 상태로 만들어주고 
-					location.href = "./myInfoRevise.html";//비밀번호 변경페이지로 이동
+					//서버에서 해당 회원정보로 로그인 상태로 만들어주고 
+					location.href = "./myInfoRevise";//비밀번호 변경페이지로 이동
 				}else{
 					alert("해당 정보와 일치하는 회원정보는 없습니다.");
 				}
@@ -72,4 +72,4 @@ $(function(){
 			
 		});
 	});
-});
+})
