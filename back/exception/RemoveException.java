@@ -1,4 +1,4 @@
-package com.pro1.exception;
+package exception;
 
 public class RemoveException extends Exception {
 	public RemoveException() {
