@@ -33,6 +33,11 @@
     		<h1 class="title">공지사항 작성</h1>
      	 	<span>제목:</span><input type="text" class="title" placeholder="제목을 입력하세요"><br>
       		<textarea class="noticeText">입력할 텍스트를 입력하세요</textarea><br>
+              <div class="form">
+                <form method="post" action="/back4/upload" enctype="multipart/form-data">
+                  <label>음식사진은 1개만 첨부
+                  <input type="button" class="ajax" value="AJAX 파일업로드">
+                </form>
       		<button class="cancle">취소하기</button><button type="submit" class="complete">작성완료</button>
     	</div>
     </body>
