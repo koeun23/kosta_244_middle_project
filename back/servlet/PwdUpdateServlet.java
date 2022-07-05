@@ -35,9 +35,6 @@ public class PwdUpdateServlet extends HttpServlet {
         //디폴트 값으로 result 0.. 
 		String result="{\"status\":0}";
 		
-		//세션얻기(클라이언트별)
-		HttpSession session=request.getSession();
-		
         // 1) 비밀번호 변경 레이아웃에서 id값을 입력 받아서 
         //  비밀번호 변경할 때 아이디값을 가져와서 WHERE 절에 해당 아이디 값인 회원정보를 찾아 비밀번호를 UPDATE구문을 이용해 변경
         // 2) 해당 페이지에선 상태는 이미 로그인된 상태이다 그러므로 로그인정보를 이용해서 비밀번호 변경해줄 회원정보를 특정하고
@@ -48,19 +45,21 @@ public class PwdUpdateServlet extends HttpServlet {
 			pstmt=con.prepareStatement(selectIdNPwdSQL);
 			pstmt.setString(1, pwd);
 			pstmt.setString(2,id);
-			rs=pstmt.executeUpdate();
-			if(rs.next()) {
-                //비밀번호 변경이 성공적일 경우 status 1 값을 front로 전달 
-				result="{\"status\":1}";
-			}else {
-				
-			}
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			MyConnection.close(rs,pstmt,con);
 		}
+		result="{\"status\":1}";
 		out.print(result);
 	}
-
+	/*
+				if(rs.next()) {
+                //비밀번호 변경이 성공적일 경우 status 1 값을 front로 전달 
+				result="{\"status\":1}";
+			}else {
+				
+			}
+	*/
 }
