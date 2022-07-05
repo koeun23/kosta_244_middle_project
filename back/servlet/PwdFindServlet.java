@@ -29,6 +29,7 @@ public class PwdFindServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();//응답출력스트림 얻기
 		HttpSession session=request.getSession();
 		
+		
 		String name=request.getParameter("name");
 		String id=request.getParameter("id");
 		String email=request.getParameter("email");

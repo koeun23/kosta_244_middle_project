@@ -57,6 +57,7 @@ public class IdFindServlet extends HttpServlet {
 			MyConnection.close(rs,pstmt,con);
 		}
 		
+		
 		out.print(result);
 	}
 
