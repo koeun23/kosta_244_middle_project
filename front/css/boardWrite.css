@@ -1,0 +1,13 @@
+div.all{
+    width:800px;
+    margin:auto;
+}
+textarea.noticeText{
+    width:700px;
+    height:600px;
+}
+.title{
+    width:650px;
+    margin:auto;
+    text-align:center;
+}
