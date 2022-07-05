@@ -1,10 +1,51 @@
 <!--회원가입 페이지-->
 <!DOCTYPE html>
 <html>
-    <head>
-
-    </head>
-    <body>
-        
-    </body>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+</head>
+<style>
+	div.all{
+		width:500px;
+		margin:auto;
+	}
+	.name{
+	    width:400px;
+	}
+	.id{
+		width:400px;
+	}
+	.pwd{
+		width:400px;
+	}
+	.email{
+	    width:400px;
+	}
+	div button{
+		width:400px;
+	}
+</style>
+<body>
+        <div class="all">
+     	<h1>회원가입</h1>
+     	<div>이름</div>
+     	<input type="text" class="name"placeholder="이름을 입력해주세요"><br>
+     	<div>아이디</div>
+     	<input type="text" class="id" placeholder="아이디를 입력해주세요"><br>
+     	<div>비밀번호</div>
+     	<input type="password" class="pwd" placeholder="비밀번호를 입력해주세요"><br>
+     	<input type="text" class="pwd" placeholder="비밀번호 확인"><br>
+     	<div>이메일</div>
+     	<input type="email" class="email" placeholder="이메일을 입력하세요"><br>
+     	<input type="checkbox">만 14세 이상입니다(필수)<br>
+     	<input type="checkbox">서비스이용약관에 동의합니다(필수)<br>
+     	<input type="checkbox">개인정보 수집/이용에 동의합니다(필수)<br>
+     	<button type="button" onclick="location.href='mainPage';">가입하기</button>
+     	
+     </div>
+</body>
 </html>
