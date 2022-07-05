@@ -15,15 +15,16 @@ import javax.servlet.http.HttpSession;
 
 import com.my.sql.MyConnection;
 
-
-public class PwdReviseServlet extends HttpServlet {
+@WebServlet("/pwdupdate")
+public class PwdUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//요청전달데이터열기
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
 
-        //사용자가 입력한 변경할 비밀번호 값을 받아오자 
+        //아이디 값과 사용자가 입력한 변경할 비밀번호 값을 받아오자 
+		String id=request.getParameter("id");
 		String pwd=request.getParameter("pwd");
 		//DB와의 연결
 		Connection con=null;
@@ -43,9 +44,10 @@ public class PwdReviseServlet extends HttpServlet {
         //  UPDATE문을 이용해서 비밀번호를 변경해준다.
 		try {
 			con=MyConnection.getConnection();
-			String selectIdNPwdSQL="UPDATE customer_info SET pw=? WHERE";//where 절에 넣어주세요
+			String selectIdNPwdSQL="UPDATE customer_info SET pw=? WHERE id=?";//해당 id인 회원정보의 pwd값을 update하자
 			pstmt=con.prepareStatement(selectIdNPwdSQL);
 			pstmt.setString(1, pwd);
+			pstmt.setString(2,id);
 			rs=pstmt.executeUpdate();
 			if(rs.next()) {
                 //비밀번호 변경이 성공적일 경우 status 1 값을 front로 전달 
