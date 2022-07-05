@@ -1,0 +1,32 @@
+div.all {
+    width: 80%;
+    height: 500px;
+    border: 1px solid;
+    margin-right:10%;
+    margin-left:10%;
+    }
+    div.findId {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+    }
+    div.findPwd {
+    width: 50%;
+    float: right;
+    box-sizing: border-box;
+    }
+    div div{
+        width:60px; 
+        height:20px; 
+        border:none;
+    }
+    div #idFindBtn{
+        position:relative;
+        float:right;
+        top:300px;
+    }
+    div #pwdFindBtn{
+        position:relative;
+        float:right;
+        top:260px;
+    }

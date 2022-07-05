@@ -1,1 +1,47 @@
-<!--자유게시판or공지사항 글 상세 보기페이지-->
+<!--자유게시판글 상세 보기페이지-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!-- 반응협웹표준 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- 스타일시트참조 -->
+        <link rel="stylesheet" href="../css/boardView.css">
+        <!-- css 파일은 각자 생성해서 href에 링크 넣어주세요 -->
+        <script src="https://ajax.googleapis.com/ajax/lib/jquery/3.6.0/jquery.min.js"></script>
+        <script src="./boardView.js"></script>
+        <!-- js파일명은 각자 수정해주세요 -->
+        
+    </head>
+    <body>
+        <div class="all">
+            <h3>자유게시판</h3>
+            <div class="board_list_wrap">
+                <div class="board_list">
+                    <div class="top">
+                        <div class="boardnum">번호</div>
+                        <div class="boardtitle">제목</div>
+                        <div class="boardWriter">글쓴이</div>
+                        <div class="date">작성일</div>
+                        <div class="count">조회</div>
+                    </div>
+                    <!-- 테스트데이터  -->
+                    <div class="viewBoard">
+                        <div class="boardnum" readonly="readonly">1</div>
+                        <div class="boardtitle" readonly="readonly"><a href="#">앵두</a></div>
+                        <div class="boardWriter" readonly="readonly">사용자1</div>
+                        <div class="date" readonly="readonly">20220702</div>
+                        <div class="count" readonly="readonly">13</div>
+                        <div class="boardText" readonly="readonly">
+                            우리 마을 정원의 앵두가 익엇어요~
+                            모두 앵두 먹으러 오세요~ ㅋㅋㅋㅋ
+                            <img src=""><!--이미지 파일 올라가야함-->
+                        </div>
+                    </div>                                                           
+                </div> 
+            </div>
+             <!-- 수정하기는 관리자만 가능하게 다른 사람들에게는 보이지 않게해준다. -->
+             <button type="submit" class="reviseNotice">수정하기</button>
+        </div>
+    </body>
+</html>
