@@ -14,34 +14,34 @@
         
     </head>
     <body>
-        <body>
-            <div class="all">
-                <h3>공지사항</h3>
-                <div class="board_list_wrap">
-                    <div class="board_list">
-                        <div class="top">
-                            <div class="boardnum">번호</div>
-                            <div class="boardtitle">제목</div>
-                            <div class="boardWriter">글쓴이</div>
-                            <div class="date">작성일</div>
-                            <div class="count">조회</div>
-                        </div>
-                        <!-- 테스트데이터  -->
-                        <div class="viewContext">
-                            <div class="boardnum">1</div>
-                            <div class="boardtitle"><a href="#">사이트 이용시 주의사항</a></div>
-                            <div class="boardWriter">관리자</div>
-                            <div class="date">20220702</div>
-                            <div class="count">13</div>
-                            <!--추가될때마다 viewBoard안에 하나씩 추가된다..-->
-                            <div class="boardnum">2</div>
-                            <div class="boardtitle"><a href="#">사이트 이용안내</a></div>
-                            <div class="boardWriter">관리자</div>
-                            <div class="date">20220702</div>
-                            <div class="count">13</div>
-                        </div>
-                    </div> 
-                </div>
+        <div class="all">
+            <h3>공지사항</h3>
+            <div class="board_list_wrap">
+                <div class="board_list">
+                    <div class="top">
+                        <div class="boardnum">번호</div>
+                        <div class="boardtitle">제목</div>
+                        <div class="boardWriter">글쓴이</div>
+                        <div class="date">작성일</div>
+                        <div class="count">조회</div>
+                    </div>
+                    <!-- 테스트데이터  -->
+                    <div class="viewBoard">
+                        <div class="boardnum">1</div>
+                        <div class="boardtitle"><a href="#">사이트 이용시 주의사항</a></div>
+                        <div class="boardWriter">관리자</div>
+                        <div class="date">20220702</div>
+                        <div class="count">13</div>
+                    </div>                                                           
+                </div> 
             </div>
+             <div class="boardText">
+                저희 웹사이트는 SARAM MOZIP(이하 '사모'라고 함)이 운영 및 관리하고 있습니다.
+                  저희 웹사이트를 이용하시기 전에 이하의 이용 조건을 읽으신 후 조건에 동의하실 경우에만 저희 웹사이트를 이용해 주십시오.또한 이용 조건은 예고 없이 내용이 변경되는 경우가 있으므로 미리 양해 바랍니다.
+                  저희 웹사이트에 게재된 정보에 대해 어떠한 표명이나 보증도 하지 않습니다. 또한 게재된 정보에 대해, 저희 회사는 세심한 주의를 기울이고 있습니다만 잘못된 정보나 제3자에 의한 데이터 위조, 데이터 다운로드 등으로 인해 발생한 장애 등을 포함하여 사유 여하를 불문하고 일절 책임을 지지 않습니다.
+             </div>
+             <!-- 수정하기는 관리자만 가능하게 다른 사람들에게는 보이지 않게해준다. -->
+             <button type="submit" class="reviseNotice">수정하기</button>
+        </div>
     </body>
 </html>
