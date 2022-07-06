@@ -24,7 +24,7 @@ public class PwdFindServlet extends HttpServlet {
 	/**
 	 * @see 비밀번호 찾기 버튼 눌렀을 떄
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");//ISO_88859_1
 		PrintWriter out=response.getWriter();//응답출력스트림 얻기
 		HttpSession session=request.getSession();
@@ -41,9 +41,10 @@ public class PwdFindServlet extends HttpServlet {
 		ResultSet rs=null;
 		String result="{\"status\":0}";
 		
+		
 		try {
 			con=MyConnection.getConnection();
-			String selectIdNPwdSQL="SELECT * FROM customer WHERE name=? AND id=? AND email=?";
+			String selectIdNPwdSQL="SELECT * FROM customer WHERE userName=? AND userId=? AND userEmail=?";
 			pstmt=con.prepareStatement(selectIdNPwdSQL);
 			pstmt.setString(1, name);
 			pstmt.setString(2, id);
@@ -52,6 +53,8 @@ public class PwdFindServlet extends HttpServlet {
 			if(rs.next()) {//입력한 정보와 일치하는 회원정보가 있으면 로그인 된 상태로 만들자 
 				result="{\"status\":1}";
 				session.setAttribute("loginInfo", id);
+				//그리고 redirect를 이용해서 비밀번호 변경하는 페이지로 이동하자
+				response.sendRedirect("/front/pwdUpdate.html");
 			}else {//입력한 정보와 일치하는 회원정보가 없다면
 				result="{\"status\":0}";
 			}
@@ -63,5 +66,7 @@ public class PwdFindServlet extends HttpServlet {
 		
 		out.print(result);
 	}
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
 }
