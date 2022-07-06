@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pro1.exception.FindException;
-import com.pro1.sql.MyConnection;
+import exception.FindException;
+import sql.MyConnection;
 
 public class boardRepository  {
 	//자유게시판 저장소

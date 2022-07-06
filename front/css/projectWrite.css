@@ -1,0 +1,19 @@
+
+.wrap_content textarea {
+	width:500px; 
+	height:100px; 
+    resize:none;/* 크기고정 */ 
+/*   resize: horizontal; // 가로크기만 조절가능 
+	resize: vertical;  세로크기만 조절가능  */
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.wrap_content {
+    width:200px;
+    height:100px;
+    font-size:20px;
+  }

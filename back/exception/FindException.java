@@ -1,4 +1,4 @@
-package com.pro1.exception;
+package exception;
 
 public class FindException extends Exception {
 	public FindException() {

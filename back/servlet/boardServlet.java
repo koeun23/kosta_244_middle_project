@@ -1,4 +1,4 @@
-package board;
+package servlet;
 
 
 import java.io.IOException;
@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pro1.exception.FindException;
+import board.board;
+import board.boardRepository;
+import exception.FindException;
 
 /**
  * Servlet implementation class boardServlet
