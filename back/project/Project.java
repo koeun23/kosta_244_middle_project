@@ -3,7 +3,7 @@ package project;
 import java.sql.Date;
 import java.util.Objects;
 
-public class project {
+public class Project {
 	
 	private int p_no;
 	private int userNo;
@@ -16,9 +16,9 @@ public class project {
 	private java.sql.Date p_updateDay;
 	private java.sql.Date p_deleteDay;
 
-	public project() {
+	public Project() {
 	}
-	public project(int p_no, int userNo, String p_title, String p_content,Date p_createDay, Date p_deadlineDay) {
+	public Project(int p_no, int userNo, String p_title, String p_content,Date p_createDay, Date p_deadlineDay) {
 		this.p_no = p_no;
 		this.userNo = userNo;
 		this.p_title = p_title;

@@ -48,7 +48,7 @@ public class projectConnection {
 		return "";
 	}
 	
-	public int getNext() {
+	public int getNext() { //다음글 +1
 		String SQL = "SELECT * from post_tb order by postNo";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(SQL);

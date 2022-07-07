@@ -16,12 +16,21 @@ public class projectRepository {
 
 
 	
-	public void insert() {
+	public void insert() throws FindException, SQLException {
+		List<Project> projects = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String selectprojectALLSQL = "SELECT * FROM project_tb order by p_no ASC";
+		try {
 		
+		}finally {
+			MyConnection.close(rs, pstmt, con);
+		}
 	}
-	public List<project> selectAll() throws FindException {
+	public List<Project> selectAll() throws FindException {
 
-		List<project> projects = new ArrayList<>();
+		List<Project> projects = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -41,7 +50,7 @@ public class projectRepository {
 				java.sql.Date createDate = rs.getDate("p_createday");
 				java.sql.Date deadlineDate = rs.getDate("p_deadlineday");
 			
-				project p = new project(p_no, userNo, p_title, p_content, createDate, deadlineDate );
+				Project p = new Project(p_no, userNo, p_title, p_content, createDate, deadlineDate );
 				projects.add(p);
 			}
 			if(projects.size()==0) {
@@ -58,7 +67,7 @@ public class projectRepository {
 		
 	}
 	// 프로젝트 글 제목으로 검색
-	public project selectByp_title(String p_title) throws FindException {
+	public Project selectByp_title(String p_title) throws FindException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -75,7 +84,7 @@ public class projectRepository {
 				java.sql.Date createDate = rs.getDate("p_createday");
 				java.sql.Date deadlineDate = rs.getDate("p_deadlineday");
 				
-				project p = new project(p_no, userNo, p_title, p_content, createDate, deadlineDate );
+				Project p = new Project(p_no, userNo, p_title, p_content, createDate, deadlineDate );
 				return p;
 			}else {
 				throw new FindException("글이 없습니다");
