@@ -18,7 +18,6 @@ public class projectWriteServlet extends HttpServlet {
      * Default constructor. 
      */
     public projectWriteServlet() {
-        // TODO Auto-generated constructor stub
     }
 
 	/**
