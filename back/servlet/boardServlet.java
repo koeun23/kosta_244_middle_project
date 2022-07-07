@@ -20,7 +20,7 @@ import exception.FindException;
  * Servlet implementation class boardServlet
  */
 @WebServlet("/board")
-public class boardServlet extends HttpServlet {
+public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     public boardServlet() {
@@ -33,7 +33,7 @@ public class boardServlet extends HttpServlet {
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		boardRepository repo = new boardRepository();
-		List<board> boards;
+		List<Board> boards;
 		
 		try {
 			boards = repo.selectAll();
@@ -47,14 +47,14 @@ public class boardServlet extends HttpServlet {
 			if(i>0) {
 				result += ",";
 			}
-			board b = boards.get(i);
+			Board b = boards.get(i);
 
 			result +="{";
-			result +="\"userNum\":";    result +="\""+b.getUserNum()+"\"";    result +=",";
+			result +="\"userNum\":";    result +="\""+b.getUserNo()+"\"";    result +=",";
 			result +="\"userId\":";  result +="\""+b.getUserId()+"\"";   result +=",";
-			result +="\"boardNum\":"; result +=b.getBoardNum(); 
-			result +="\"boardContents\":"; result +=b.getBoardContents(); 
-			result +="\"createDate\":"; result +=b.getCreateDate(); 
+			result +="\"boardNum\":"; result +=b.getBoardNo(); 
+			result +="\"boardContents\":"; result +=b.getContext(); 
+			result +="\"createDate\":"; result +=b.getWriteDate(); 
 			result +="}"; //json문자열
 		}
 		

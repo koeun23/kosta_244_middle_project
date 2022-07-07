@@ -6,7 +6,7 @@ $(function(){
 		//입력한 아이디 값이랑 비밀번호 값을 찾기
 		let inputIdValue=$id.val();
 		let inputPwdValue=$pwd.val();
-		
+
 		//서버로 보내기 
 		let url="";
 		let data="id="+inputIdValue+"&pwd"+inputPwdValue;

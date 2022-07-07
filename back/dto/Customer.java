@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-class Customer{
+public class Customer{
     private int userNo;//회원번호
 	private String userId;//회원아이디
 	private String userPwd;//회원비밀번호
