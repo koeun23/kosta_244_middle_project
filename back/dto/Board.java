@@ -21,6 +21,7 @@ public class Board {
 		this.writeDate = writeDate;
 	}
 	public Board(int userNo, String userId, int boardNo, String context, Date writeDate, Date updateDate, Date deleteDate){
+        this.userNo = userNo;
 		this.userId = userId;
 		this.boardNo = boardNo;
 		this.context = context;
@@ -68,7 +69,7 @@ public class Board {
 		this.boardNo = boardNo;
 	}
 
-	public String getontext() {
+	public String getContext() {
 		return context;
 	}
 

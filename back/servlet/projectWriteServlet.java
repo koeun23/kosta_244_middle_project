@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class projectWriteServlet
  */
 @WebServlet("/projectWrite")
-public class projectWriteServlet extends HttpServlet {
+public class ProjectWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public projectWriteServlet() {
+    public ProjectWriteServlet() {
         // TODO Auto-generated constructor stub
     }
 
