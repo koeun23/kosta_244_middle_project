@@ -22,7 +22,7 @@ $(function(){
         //ajax는 servlet과 연결을 하는것에 필요한 파트임
         $.ajax({
             url:url,
-            method: 'get',
+            method: 'post',
             data: data,
             success:function(){
 
