@@ -17,9 +17,9 @@ public class boardRepository  {
 	public void insert() {
 		
 	}
-	public List<board> selectAll() throws FindException {
+	public List<Board> selectAll() throws FindException {
 
-		List<board> boards = new ArrayList<>();
+		List<Board> boards = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -54,7 +54,7 @@ public class boardRepository  {
 		}
 		
 	}
-	public board selectByboardNum(int boardNo) throws FindException {
+	public Board selectByboardNum(int boardNo) throws FindException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -70,7 +70,7 @@ public class boardRepository  {
 				String boardContents = rs.getString("b_contents");
 				java.sql.Date createDate = rs.getDate("b_createday");
 				
-				board b = new board(userNum, userId, boardNo, boardContents, createDate);
+				Board b = new Board(userNum, userId, boardNo, boardContents, createDate);
 				return b;
 			}else {
 				throw new FindException("상품이 없습니다");

@@ -15,8 +15,11 @@
     </head>
     <body>
         <form method="post" action="#.js">
-            <!-- action="http://localhost:8888/back/projectWrite -->
+            <!-- action="http://localhost:8888/back/projectview -->
             <div class="cateSelect">
+                <div class="catetitle">
+                    <label>글 카테고리</label>
+                </div>
             <select class="field">
                 <option>분야를 선택하세요</option>
                 <option>IT</option>
@@ -40,7 +43,7 @@
                 <option>기타</option>
             </select>
             
-                <input type="submit" value="검색">
+                <!-- <input type="submit" value="검색"> -->
             
          
         </div>
@@ -58,7 +61,7 @@
         <div class="wrap_content">
             <input type="text" class="form-control" placeholder="제목을 입력해주세요."  name="p_title" maxlength="50" size="100">
             <textarea type="text" class="form-control" placeholder="내용을 입력해주세요." name="p_content" maxlength="2048" style="height:350px" cols="103"></textarea>
-    </div>
+        </div>
         <fieldset>
             <div>마감일자</div>
             <input type="datetime-local" value="2022-07-04">
@@ -70,8 +73,9 @@
 		</fieldset>
     </form>
         <fieldset>
+            <input type="submit" value="취소하기">
             <input type="submit" value="임시저장">
-		    <input type="submit" value="저장">
+		    <input type="submit" name="save" value="저장">
         </fieldset>
     </body>
 </html>
