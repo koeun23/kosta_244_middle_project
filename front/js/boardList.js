@@ -10,10 +10,11 @@ $(function(){
         //자유게시판 글 번호를 서버로 ajax 요청으로 전달하고 
         //서버에선 해당 글 번호에 맞는 글의 상세페이지로 이동하게 만들어준다.
         let url="back/boardlist";
+        let data="boardNo="+boardNo;
         $.ajax({
             url:url,
             method:'get',
-            data: boardNo,
+            data: data,
             success:function(){
 
             },
