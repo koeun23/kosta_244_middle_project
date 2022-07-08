@@ -1,10 +1,17 @@
 import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,18 +20,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.my.exception.FindException;
-import com.my.projectRepository.NoticeOracleRepository;
-import com.my.projectdto.Notice;
 import com.my.sql.MyConnection;
 
 
-@WebServlet("/noticelist")
-public class NoticeListServlet extends HttpServlet {
+@WebServlet("/boardlist")
+public class BoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public NoticeListServlet() {
+    public BoardListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,7 +38,7 @@ public class NoticeListServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 
         String boardNo=request.getParameter("boardNo");
-        int boardno=Integer.parseInt(boardNo);
+
         //DB와의 연결
 		Connection con=null;
 		//SQL송신
@@ -44,25 +47,6 @@ public class NoticeListServlet extends HttpServlet {
 		ResultSet rs=null;
 		String result=null;
 		System.out.println(boardNo);
-		
-		NoticeOracleRepository repository=new NoticeOracleRepository();
-
-		try {
-			Notice p=repository.selectByboardNo(boardno);
-			//List<OrderLine> line_list=new ArrayList<>();
-			//List<OrderInfo> order_list=new ArrayList<>();
-			ObjectMapper mapper=new ObjectMapper();
-			String jsonValue=mapper.writeValueAsString(p);
-			//String jsonValue=mapper.writeValueAsString(line_list)+mapper.writeValueAsString(order_list);
-			System.out.println("jsonValue:"+jsonValue);
-			out.print(jsonValue);
-			
-		
-		} catch (FindException e) {
-			e.printStackTrace();
-		}
-		
-		
 		
 		try {
 			con=MyConnection.getConnection();
@@ -74,7 +58,6 @@ public class NoticeListServlet extends HttpServlet {
                 //공지사항 상세 보기 페이지로 이동하고 
                 //DB에서 해당 글의 정보를 상세보기 페이지에 채워 넣어준다
 				response.sendRedirect("http://localhost:8888/front/project_html/noticeView.html");
-				out.print(false);
                 //?.... 해당 페이지로 이동한 다음에 
                 //어떻게 상세페이지내용을 채워주지....
 		    }else {//입력한 정보와 일치하는 게시글이 없으면
