@@ -25,7 +25,7 @@ $(function(){
             method: 'post',
             data: data,
             success:function(){
-
+                //html 문자열로 받아서 뿌리기
             },
             error:function(jqXHE){
                 alert(jqXHR.error);
