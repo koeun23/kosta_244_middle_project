@@ -21,13 +21,23 @@ public class projectRepository {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String selectprojectALLSQL = "SELECT * FROM project_tb order by p_no ASC";
+		String insertprojectSQL = "INSERT INTO PROJECT_TB VALUES(?,?,?,?,?)";
 		try {
+			con = projectConnection.getConnection();
+			pstmt = con.prepareStatement(insertprojectSQL);
+			pstmt.setString(0, "sq_tb_no.nextval");
 		
 		}finally {
 			MyConnection.close(rs, pstmt, con);
 		}
-	}
+		
+//		
+//		pstmt = con.prepareStatement("UPDATE SAMPLE_TABLE SET NAME=? WHERE ID = ?");
+//		pstmt.setString(1, "Park");
+//		pstmt.setInt(2, 100);
+//		int ret = pstmt.executeUpdate();
+//		System.out.println("Return : " + ret );
+	}										
 	public List<Project> selectAll() throws FindException {
 
 		List<Project> projects = new ArrayList<>();
@@ -43,14 +53,13 @@ public class projectRepository {
 			//System.out.println(boards.size());
 			while(rs.next()) {
 				int p_no = rs.getInt("p_No");
-				int userNo = rs.getInt("userNo");
+				int user_no = rs.getInt("user_no");
 				//System.out.println(userNum);
 				String p_title = rs.getString("p_title");
 				String p_content = rs.getString("p_content");
 				java.sql.Date createDate = rs.getDate("p_createday");
 				java.sql.Date deadlineDate = rs.getDate("p_deadlineday");
-			
-				Project p = new Project(p_no, userNo, p_title, p_content, createDate, deadlineDate );
+				Project p = new Project(user_no, p_title, p_content, createDate, deadlineDate );
 				projects.add(p);
 			}
 			if(projects.size()==0) {
@@ -71,20 +80,20 @@ public class projectRepository {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String selectp_title = "SELECT * FROM project_tb WHERE p_title=?";
+		String select_title = "SELECT * FROM project_tb WHERE p_title=?";
 		try {
 			con = MyConnection.getConnection();
-			pstmt = con.prepareStatement(selectp_title);
+			pstmt = con.prepareStatement(select_title);
 			pstmt.setString(1, p_title);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				int p_no = rs.getInt("userNo");
-				int userNo = rs.getInt("userNo");
+//				int p_no = rs.getInt("userNo");
+				int userNo = rs.getInt("user_no");
 				String p_content = rs.getString("p_content");
 				java.sql.Date createDate = rs.getDate("p_createday");
 				java.sql.Date deadlineDate = rs.getDate("p_deadlineday");
 				
-				Project p = new Project(p_no, userNo, p_title, p_content, createDate, deadlineDate );
+				Project p = new Project(userNo, p_title, p_content, createDate, deadlineDate );
 				return p;
 			}else {
 				throw new FindException("글이 없습니다");
