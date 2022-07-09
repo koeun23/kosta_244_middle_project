@@ -1,0 +1,32 @@
+*{
+    margin: auto;
+    padding: 0;
+}
+div.p_board_title{
+    text-align: center;
+}
+div.postno{
+    position: relative;
+    margin: auto;
+    text-decoration-line: overline;
+}
+div.userno{
+    text-decoration-line: overline;
+    position: relative; 
+    left: 50px;
+    top: -20px;
+}
+div.p_title{
+    position: relative;
+    left: 150px;
+    top: -45px;
+}
+div.p_content{
+    text-decoration-line: overline;
+    position: relative;
+
+}
+div.p_title{
+    position: relative;
+    
+}
