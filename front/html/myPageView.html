@@ -12,29 +12,22 @@
         <script src="#.js"></script>
         <!-- js파일명은 각자 수정해주세요 -->
     </head>
-    <style>
-    div {
-	border:1px solid;
-	text-align:left;
-	width:300px;
-	margin:auto;
-	}
-	h1{
-		text-align:center;
-		width:300px;
-		margin:auto;
-	}
-    </style>
+    
     <body>
     	<h1>마이페이지</h1>
     	<div>
     		<a href="./myInfoView.html">내정보</a>
     	</div>
     	<div>
-    		<a href="">작성한 글보가</a>
+    		<a href="">작성한 글보기</a>
     	</div>
     	<div>
     		<a href="./resumeWrite.html">자기소개서 작성</a>
-    	</div>	
+    	</div>
+		<div>
+			<button class="addsaveBtn" onclick="location='resumeList.jsp'">회원탈퇴</button>
+			<button class="addsaveBtn" onclick="location='resumeList.jsp'">비밀번호변경</button>
+			
+		</div>	
     </body>
 </html>
