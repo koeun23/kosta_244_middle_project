@@ -49,7 +49,7 @@ public class projectConnection {
 	}
 	
 	public int getNext() { //다음글 +1
-		String SQL = "SELECT * from post_tb order by postNo";
+		String SQL = "SELECT * from project_tb order by p_No";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
