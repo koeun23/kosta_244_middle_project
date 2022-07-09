@@ -32,7 +32,6 @@ public class projectList extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-   //DB랑 통신해서 값 가져옴
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("application/json;charset=UTF-8");
@@ -49,9 +48,10 @@ public class projectList extends HttpServlet {
 		
 		try {
 			con=MyConnection.getConnection();
-			String selectBoardSQL="SELECT * FROM WHERE p_no=?";
+			String selectBoardSQL="SELECT * FROM project_tb";
 			pstmt = con.prepareStatement(selectBoardSQL);
-			pstmt.setString(1, p_no);
+			//How to show is not decided
+			pstmt.setString(1, null);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				response.sendRedirect("http/...");
@@ -62,7 +62,6 @@ public class projectList extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-    //DB연결 CLOSE
 			MyConnection.close(rs, pstmt, con);
 		}
 	}
