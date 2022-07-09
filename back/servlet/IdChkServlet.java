@@ -29,7 +29,7 @@ public class IdChkServlet extends HttpServlet {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String selectidChkSQL = "SELECT * FROM customer WHERE id = ?";
+		String selectidChkSQL = "SELECT * FROM customer WHERE user_id = ?";
 		try {
 		    con = MyConnection.getConnection();
 		    pstmt = con.prepareStatement(selectidChkSQL);

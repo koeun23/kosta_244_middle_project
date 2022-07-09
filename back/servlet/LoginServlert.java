@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 		
 		try {
 			con = MyConnection.getConnection();
-			String selectIdNPwdSQL = "SELECT * FROM customer WHERE id=? AND pwd=?";
+			String selectIdNPwdSQL = "SELECT * FROM customer WHERE user_id=? AND user_pwd=?";
 			pstmt = con.prepareStatement(selectIdNPwdSQL);
 			pstmt.setString(1,  id);
 			pstmt.setString(2,  pwd);

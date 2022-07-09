@@ -28,7 +28,7 @@ public class SignupServlet extends HttpServlet {
 		Connection con = null;
 		//SQL송신
 		PreparedStatement pstmt = null; //executeUpdate()
-		String insertSQL = "INSERT INTO customer(name,id,pwd, email, status, ) VALUES(?,?,?,?,1,)";
+		String insertSQL = "INSERT INTO customer(user_name,user_id,user_pwd, user_email, status, ) VALUES(?,?,?,?,1,)";
 		
 		try {
 			con = MyConnection.getConnection();
