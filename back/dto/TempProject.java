@@ -1,4 +1,6 @@
-package kostaproject_hye;
+package dto;
+import java.util.Date;
+import java.util.Objects;
 
 public class TempProject {
 	private int t_p_no;
