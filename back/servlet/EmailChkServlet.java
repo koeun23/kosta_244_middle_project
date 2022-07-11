@@ -29,11 +29,11 @@ public class EmailChkServlet extends HttpServlet {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String selectemailChkSQL = "SELECT * FROM customer WHERE email = ?";
+		String selectemailChkSQL = "SELECT * FROM customer WHERE user_email = ?";
 		try {
 		    con = MyConnection.getConnection();
 		    pstmt = con.prepareStatement(selectemailChkSQL);
-		    pstmt.setString(1,  id);
+		    pstmt.setString(1,  email);
 		    rs = pstmt.executeQuery();
 		    if(!rs.next()) {
 		    	result = "{\"status\":1, \"msg\": \"사용가능한 이메일입니다\"}";

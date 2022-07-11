@@ -6,9 +6,10 @@ $(function(){
 
 
     //저장 눌렀을때
+    $("button.")
     $.ajax({
         url:,
-        metho:'post',
+        method:'post',
         data:,
         success:function(jsonObj){
             

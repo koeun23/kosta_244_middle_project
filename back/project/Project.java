@@ -6,42 +6,53 @@ import java.util.Objects;
 public class Project {
 	
 	private int p_no;
-	private int userNo;
+	private int user_no;
 	private String p_title;
 	private String p_content;
-	private int p_like;
-	private int p_views;
-	private java.sql.Date p_createDay;
-	private java.sql.Date p_deadlineDay;
-	private java.sql.Date p_updateDay;
-	private java.sql.Date p_deleteDay;
+	private int p_view;
+	private java.sql.Date p_createday;
+	private java.sql.Date p_deadlineday;
+	private java.sql.Date p_updateday;
+	private java.sql.Date p_deleteday;
 
 	public Project() {
 	}
-	public Project(int p_no, int userNo, String p_title, String p_content,Date p_createDay, Date p_deadlineDay) {
+	//모든 데이터가 들어가는 생성자
+	public Project(int p_no, int user_no, String p_title, String p_content, int p_view, 
+			Date p_createday, Date p_deadlineday, Date p_updateday, Date p_deleteday) {
 		this.p_no = p_no;
-		this.userNo = userNo;
+		this.user_no = user_no;
 		this.p_title = p_title;
 		this.p_content = p_content;
-		this.p_createDay = p_createDay;
-		this.p_deadlineDay = p_deadlineDay;
-	
+		this.p_view = p_view;
+		this.p_createday = p_createday;
+		this.p_deadlineday = p_deadlineday;
+		this.p_updateday = p_updateday;;
+		this.p_deleteday = p_deleteday;
+	}
+	//not null 값만 들어가는 생성자 (모집글 작성기준)
+	public Project(int user_no, String p_title, String p_content,Date p_createday, Date p_deadlineday) {
+		this.user_no = user_no;
+		this.p_title = p_title;
+		this.p_content = p_content;
+		this.p_createday = p_createday;
+		this.p_deadlineday = p_deadlineday;
 	}
 
-	public int getPostNo() {
+	public int getp_no() {
 		return p_no;
 	}
 
-	public void setPostNo(int postNo) {
+	public void setp_no(int postNo) {
 		this.p_no = postNo;
 	}
 
-	public int getUserNo() {
-		return userNo;
+	public int getuser_no() {
+		return user_no;
 	}
 
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
+	public void setuser_no(int user_no) {
+		this.user_no = user_no;
 	}
 
 	public String getP_title() {
@@ -60,53 +71,46 @@ public class Project {
 		this.p_content = p_content;
 	}
 
-	public int getP_like() {
-		return p_like;
+	public int getP_view() {
+		return p_view;
 	}
 
-	public void setP_like(int p_like) {
-		this.p_like = p_like;
+	public void setP_view(int p_views) {
+		this.p_view = p_views;
 	}
 
-	public int getP_views() {
-		return p_views;
+	public java.sql.Date getP_createday() {
+		return p_createday;
 	}
 
-	public void setP_views(int p_views) {
-		this.p_views = p_views;
+	public void setP_createday(java.sql.Date p_createday) {
+		this.p_createday = p_createday;
 	}
 
-	public java.sql.Date getP_createDay() {
-		return p_createDay;
+	public java.sql.Date getP_deadlineday() {
+		return p_deadlineday;
 	}
 
-	public void setP_createDay(java.sql.Date p_createDay) {
-		this.p_createDay = p_createDay;
+	public void setP_deadlineday(java.sql.Date p_deadlineday) {
+		this.p_deadlineday = p_deadlineday;
 	}
 
-	public java.sql.Date getP_deadlineDay() {
-		return p_deadlineDay;
+	public java.sql.Date getP_updateday() {
+		return p_updateday;
 	}
 
-	public void setP_deadlineDay(java.sql.Date p_deadlineDay) {
-		this.p_deadlineDay = p_deadlineDay;
+	public void setP_updateday(java.sql.Date p_updateday) {
+		this.p_updateday = p_updateday;
 	}
 
-	public java.sql.Date getP_updateDay() {
-		return p_updateDay;
+	public java.sql.Date getP_deleteday() {
+		return p_deleteday;
 	}
 
-	public void setP_updateDay(java.sql.Date p_updateDay) {
-		this.p_updateDay = p_updateDay;
+	public void setP_deleteday(java.sql.Date p_deleteday) {
+		this.p_deleteday = p_deleteday;
 	}
 
-	public java.sql.Date getP_deleteDay() {
-		return p_deleteDay;
-	}
-
-	public void setP_deleteDay(java.sql.Date p_deleteDay) {
-		this.p_deleteDay = p_deleteDay;
-	}
 
 
 }
