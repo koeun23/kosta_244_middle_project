@@ -1,4 +1,4 @@
-package com.my.projectServlet;
+package com.my.projectservlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,7 +27,7 @@ public class PwdUpdateServlet extends HttpServlet {
         //아이디 값과 사용자가 입력한 변경할 비밀번호 값을 받아오자 
 		String id=request.getParameter("id");
 		String pwd=request.getParameter("pwd");
-		System.out.println("userId="+id+" "+"userPwd="+pwd);
+		System.out.println("user_id="+id+" "+"user_pwd="+pwd);
 		//DB와의 연결
 		Connection con=null;
 		//SQL송신
@@ -41,7 +41,7 @@ public class PwdUpdateServlet extends HttpServlet {
         //  비밀번호 변경할 때 아이디값을 가져와서 WHERE 절에 해당 아이디 값인 회원정보를 찾아 비밀번호를 UPDATE구문을 이용해 변경
 		try {
 			con=MyConnection.getConnection();
-			String selectIdNPwdSQL="UPDATE customer SET userPwd=? WHERE userId=?";//해당 id인 회원정보의 pwd값을 update하자
+			String selectIdNPwdSQL="UPDATE customer SET user_pwd=? WHERE user_id=?";//해당 id인 회원정보의 pwd값을 update하자
 			pstmt=con.prepareStatement(selectIdNPwdSQL);
 			pstmt.setString(1, pwd);
 			pstmt.setString(2,id);

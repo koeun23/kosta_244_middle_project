@@ -1,4 +1,7 @@
-$(function(){
+$(document).ready(function(){
+    var sql = ign.sql();
+    var driver = sql.driver("oraclesql");
+    var qry = sql.query("select * from project_tb");
     //글쓰기 버튼 눌렀을 때
     //projectWrite.html <a href=""~
 
@@ -23,8 +26,18 @@ $(function(){
         $.ajax({
             url:url,
             method: 'post',
-            data: data,
+            data: JSON,
+            //성공하면 success로 넘어가서 DB의 data를 html tag로 넘겨줌
             success:function(){
+                $.each(query.content,function(data){
+                    html += ""
+                    html += ""
+                    html += ""
+                    html += ""
+
+                })
+
+
                 //html 문자열로 받아서 뿌리기
             },
             error:function(jqXHE){

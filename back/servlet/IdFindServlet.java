@@ -29,7 +29,7 @@ public class IdFindServlet extends HttpServlet {
 		
 		String name=request.getParameter("name");
 		String email=request.getParameter("email");
-		System.out.println("userName="+name+"userEmail="+email);
+		System.out.println("user_name="+name+"user_email="+email);
 		//DB와의 연결
 		Connection con=null;
 		//SQL송신
@@ -40,7 +40,7 @@ public class IdFindServlet extends HttpServlet {
 		//"{\"status\":0}"
 		try {
 			con=MyConnection.getConnection();
-			String selectIdNPwdSQL="SELECT * FROM customer WHERE userName=? AND userEmail=?";
+			String selectIdNPwdSQL="SELECT * FROM customer WHERE user_name=? AND user_email=?";
 			pstmt=con.prepareStatement(selectIdNPwdSQL);
 			pstmt.setString(1, name);
 			pstmt.setString(2, email);
@@ -48,8 +48,8 @@ public class IdFindServlet extends HttpServlet {
 			System.out.println(rs);
 			if(rs.next()) {//해당하는 아이가 있는지
 				result="{\"status\":1}";//성공했다는 의미
-				System.out.println(rs.getString("userId"));
-				String customerId = rs.getString("userId");//DB에 저장되어 있는 회원 아이디를 찾고
+				System.out.println(rs.getString("user_id"));
+				String customerId = rs.getString("user_id");//DB에 저장되어 있는 회원 아이디를 찾고
 				out.print(customerId);//클라이언트에게 아이디 출력
 				
 			}else {//입력한 정보와 일치하는 회원정보가 있으면 id값을 알려주자

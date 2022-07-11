@@ -1,23 +1,25 @@
+package com.my.projectdto;
+
 import java.util.Objects;
 
 public class Customer{
-    private int userNo;//회원번호
-	private String userId;//회원아이디
-	private String userPwd;//회원비밀번호
-	private String userName;//회원이름
-	private String userEmail;//회원 이메일 
+    private int user_no;//회원번호
+	private String user_id;//회원아이디
+	private String user_pwd;//회원비밀번호
+	private String user_name;//회원이름
+	private String user_email;//회원 이메일 
 	public Customer() {}
 
-	public Customer(int userNo, String userId, String userPwd, String userName, String userEmail) {
-		this.userNo = userNo;
-		this.userId = userId;
-		this.userPwd = userPwd;
-		this.userName = userName;
-		this.userEmail = userEmail;
+	public Customer(int user_no, String user_id, String user_pwd, String user_name, String user_email) {
+		this.user_no = user_no;
+		this.user_id = user_id;
+		this.user_pwd = user_pwd;
+		this.user_name = user_name;
+		this.user_email = user_email;
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(userNo);
+		return Objects.hash(user_no);
 	}
 	public boolean equals(Object obj) {
 		if(this == obj){
@@ -30,48 +32,50 @@ public class Customer{
 	        return false;
 	    }
 		Customer other = (Customer) obj;
-		return Objects.equals(userNo,other.userNo);
+		return Objects.equals(user_no,other.user_no);
 	}
 
-	public int getUserNo() {
-		return userNo;
+	public int getUser_no() {
+		return user_no;
 	}
 
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
+	public void setUser_no(int user_no) {
+		this.user_no = user_no;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getUser_id() {
+		return user_id;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
-	public String getUserPwd() {
-		return userPwd;
+	public String getUser_pwd() {
+		return user_pwd;
 	}
 
-	public void setUserPwd(String userPwd) {
-		this.userPwd = userPwd;
+	public void setUser_pwd(String user_pwd) {
+		this.user_pwd = user_pwd;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUser_name() {
+		return user_name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 
-	public String getUserEmail() {
-		return userEmail;
+	public String getUser_email() {
+		return user_email;
 	}
 
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
-	}	
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
+	}
+	
+	
 	
 }
 
