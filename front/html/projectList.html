@@ -1,46 +1,49 @@
-<!--모집글 리스트로 보여주는 페이지-->
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <!-- 반응협웹표준 -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- 스타일시트참조 -->
-        <link rel="stylesheet" href="css/style.css">
-        <!-- css 파일은 각자 생성해서 href에 링크 넣어주세요 -->
-        <script src="https://ajax.googleapis.com/ajax/lib/jquery/3.6.0/jquery.min.js"></script>
-        <script src="#.js"></script>
-        <link rel="stylesheet" href="../css/projectList.css">
-    </head>
-    <body>
-        <div class="p_board_wrap">
-            <div class="p_board_title">
-                <Strong>모집글 리스트~</Strong>
-                <p>모집글 리스트입니다.</p>
-            </div> 
-            <div>
-                <!-- 카테고리 분류 넣어야함 -->
-                카테고리
-            </div>
-            <div class="p_board_list">
-                <div class="top">
-                    <div class="p_no">번호</div>
-                    <div class="userno">작성자</div>
-                    <div class="p_title">제목</div>
-                    <div class="p_content">내용</div>
-                    <div class="p_like">좋아요</div>
-                    <div class="p_views">조회수</div>
-                    <div class="p_createday">작성일</div>
+    <!--모집글 리스트로 보여주는 페이지-->
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <!-- 반응협웹표준 -->
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- 스타일시트참조 -->
+            <link rel="stylesheet" href="css/style.css">
+            <!-- css 파일은 각자 생성해서 href에 링크 넣어주세요 -->
+            <script src="https://ajax.googleapis.com/ajax/lib/jquery/3.6.0/jquery.min.js"></script>
+            <script src="projectList.js"></script>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+        </head>
+        <body>
+            <div class="p_board_wrap">
+                <div class="p_board_title">
+                    <Strong>모집글 리스트~</Strong>
+                    <p>모집글 리스트입니다.</p>
+                </div> 
+                <div>
+                    <!-- 카테고리 분류 넣어야함 -->
+                    카테고리
                 </div>
-        </div>
-        <div class=""
-        <div class="bt_wrap">
-            <input type="submit" value="글쓰기"></a>
-        </div>
+                <div class="p_board_list">
+                    <div class="top">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="p_no">번호</th>
+                                    <th class="usernno">작성자</th>
+                                    <th class="p_title">제목</th>
+                                    <th class="p_content">내용</th>
+                                    <th class="p_views">조회수</th>
+                                    <th class="p_createday">작성일</th>
+                                </tr>
+                            </thead>
+                        </table>
+            <div class="bt_wrap">
+                <a href="./projectWrite.html" class="write" style="display: button;">글쓰기</button>
+            </div>
 
 
-        </div>
+            </div>
 
-        
-    </body>
-</html>
+            
+        </body>
+    </html>
