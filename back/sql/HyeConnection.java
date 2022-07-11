@@ -24,7 +24,7 @@ public class HyeConnection {
 		String user = "hr";
 		String password = "hr";
 
-		con = DriverManager.getConnection(url, user, password);
+		con = DriverManager.getConnection(url, hr, hr);
 		return con;
 	}
 
