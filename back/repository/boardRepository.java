@@ -83,8 +83,6 @@ public class boardRepository  {
 		}finally {
 			MyConnection.close(rs, pstmt, con);
 		}
-	
-		
 	}
 	public void update() {
 		
