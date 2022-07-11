@@ -27,7 +27,7 @@ public class NoticeViewServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");//ISO_88859_1
+		response.setContentType("application/json;charset=UTF-8");//ISO_88859_1
 		PrintWriter out=response.getWriter();//응답출력스트림 얻기
 		HttpSession session=request.getSession();
 		
@@ -48,12 +48,19 @@ public class NoticeViewServlet extends HttpServlet {
                int board_no= rs.getInt("n_no");
                String title=rs.getString("n_title");
                String content=rs.getString("n_content");
+               
+               System.out.println(board_no);
+               System.out.println(title);
+               System.out.println(content);
+               
                ObjectMapper mapper = new ObjectMapper();
                Map<String, Object>map = new HashMap<>();
+               map.put("boardnum", board_no);
                map.put("boardText", content);
                map.put("boardtitle", title);
                result = mapper.writeValueAsString(map);
                out.print(result);
+               
 //               out.println("<html><head></head><body>");
 //               out.println("<h1>"+board_no+"</h1>");
 //               out.println("<h3>"+title+"</h3>");
@@ -77,4 +84,5 @@ public class NoticeViewServlet extends HttpServlet {
 	}
 
 }
+
 
