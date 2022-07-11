@@ -1,7 +1,4 @@
 $(document).ready(function(){
-    var sql = ign.sql();
-    var driver = sql.driver("oraclesql");
-    var qry = sql.query("select * from project_tb");
     //글쓰기 버튼 눌렀을 때
     //projectWrite.html <a href=""~
 
@@ -18,10 +15,10 @@ $(document).ready(function(){
         let $boardNo=$board.firstChild();
 
         //모집글번호를 찾고
-        let boardNo=$boardNo.val();
+        let p_no=$p_no.val();
         //서버로 모집글번호를 전송
-        let url="back/projectlist";
-        let data="boardNo="+boardNo;
+        let url="back/projectview";
+        let data="p_no="+p_no;
         //ajax는 servlet과 연결을 하는것에 필요한 파트임
         $.ajax({
             url:url,
@@ -30,16 +27,21 @@ $(document).ready(function(){
             //성공하면 success로 넘어가서 DB의 data를 html tag로 넘겨줌
             success:function(){
                 $.each(query.content,function(data){
-                    html += ""
-                    html += ""
-                    html += ""
-                    html += ""
-
-                })
-
+                    html += "<tr>";
+                    html += "<th>"+this.p_no+"</th>";
+                    html += "<th>"+this.p_userno+"</th>";
+                    html += "<th>"+this.p_title+"</th>";
+                    html += "<th>"+this.p_content+"</th>";
+                    html += "<th>"+this.p_like+"</th>";
+                    html += "<th>"+this.p_views+"</th>";
+                    html += "<th>"+this.p_createday+"</th>";
+                    html += "</tr>";
+                });
+                $(".data").html(html);
 
                 //html 문자열로 받아서 뿌리기
             },
+
             error:function(jqXHE){
                 alert(jqXHR.error);
             }
