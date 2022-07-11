@@ -18,7 +18,7 @@ $(function(){
    		console.log(boardNo);
    		//$('.linkNotice').prop('href',"http://localhost:8888/back4/noticeview?boardNo="+boardNo);
    		
-   		location.href="../project_html/noticeView.html?boardNo=" + boardNo;
+   		location.href="../project_html/boardView.html?boardNo=" + boardNo;
    		return false;
 	});
 
