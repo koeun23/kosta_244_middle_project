@@ -1,36 +1,17 @@
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.my.exception.FindException;
-import com.my.projectRepository.BoardOracleRepository;
-import com.my.projectRepository.BoardRepository;
-import com.my.projectdto.Board;
+import com.my.projectdto.Notice;
 import com.my.sql.MyConnection;
 
 /**
  * Servlet implementation class BoardListServlet
  */
-@WebServlet("/boardlist")
-public class BoardListServlet extends HttpServlet {
+@WebServlet("/noticelist")
+public class NoticeListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public BoardListServlet() {
+    public NoticeListServlet() {
         super();
     }
 
@@ -45,19 +26,19 @@ public class BoardListServlet extends HttpServlet {
 		ObjectMapper mapper = new ObjectMapper();
         Map<String, Object>map = new HashMap<>();
 //        List<Map<String,Object>>list=new ArrayList<>();
-        List<Board>list=new ArrayList<>();
+        List<Notice>list=new ArrayList<>();
 		try {
 			con=MyConnection.getConnection();
-			String selectBoardSQL="SELECT * FROM board_tb";
+			String selectBoardSQL="SELECT * FROM notice_tb";
 			pstmt=con.prepareStatement(selectBoardSQL);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				//list에 있는 자유게시판 1개씩 글을 꺼내 정보를 추출하고 out.print()로 boardList.html에 출력해보자
-				int b_no= rs.getInt("b_no");
-				String b_title=rs.getString("b_title");
-				Board b = new Board();
-				b.setB_no(b_no);
-				b.setB_title(b_title);
+				int n_no= rs.getInt("n_no");
+				String n_title=rs.getString("n_title");
+				Notice b = new Notice();
+				b.setN_no(n_no);
+				b.setN_title(n_title);
 //			    map.put("boardnum", b_no);//글번호
 //			    map.put("boardtitle", b_title);//글제목 넣어주기
 				
