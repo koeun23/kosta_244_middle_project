@@ -85,13 +85,6 @@ function showComment(comment){
     //타임스템프찍기
     showTime.innerHTML = generateTime();
     countSpan.innerHTML=0;
-    //투표창 만들기, css먼저 입혀야함.  
-    voteUp.id = "voteUp";
-    voteUp.innerHTML = '↑';    
-    voteDown.id = "voteDown";
-    voteDown.innerHTML = '↓';       
-    voteDiv.appendChild(voteUp);
-    voteDiv.appendChild(voteDown);
 
     //댓글뿌려주기       
     commentList.appendChild(userName);
