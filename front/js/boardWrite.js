@@ -1,27 +1,27 @@
 $(function(){
-    //취소하기 눌렀을 때
-    $("button.cancle").click(function(){
-        //공지사항 글쓰기 페이지로 이동하도록
-        location.href="./boardWrite.html";
-    });
-    //작성완료 눌렀을 때 
-    $("button.complete").click(function(){
-        //공지사항 글제목과 글을 서버에 이동시켜서 
-        //서버에서 글번호와 작성자 등의 정보와 함께 DB에 저장시킨다.
-        let $title=$(".title");
-        let $context=$(".boardText");
-
-        let title=$title.val();
-        let context=$context.val();
-        
-        let url="";
-        let data="title="+title+"&context="+context;
-        $.ajax({
-            url:url,
-            method:'get',
-            data:data,
-            success:function(){},
-            error:function(){}
-        });
-    });
+	//전송버튼을 누르면 제목과 내용을 서버로 보내서 DB에 저장시켜보자
+	$(".complete").click(function(){
+		let $title=$("#title");
+		let $boardText=$(".boardText");
+		let InputTitleValue=$title.val();
+		let InputBoardTextValue=$boardText.val();
+		let url="http://localhost:8888/back4/boardwrite";
+		let data="title="+InputTitleValue+"&content="+InputBoardTextValue;
+		$.ajax({
+			url: url,
+			method: 'get',
+			data: data,
+			success:function(jsonObj){
+				location.href="http://localhost:8888/front/project_html/boardList.html";
+			},
+			error:function(){}
+		});
+	});
+	
+	
+	//취소버튼 누르면 처음 글작성 페이지로 초기화된 상태로 보여줍시다
+	$(".cancle").click(function(){
+		location.href="http://localhost:8888/front/project_html/boardWrite.html";
+		return false;
+	});
 });
