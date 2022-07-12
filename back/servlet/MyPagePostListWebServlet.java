@@ -1,6 +1,7 @@
-package servlet;
+package hye.myPage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -23,33 +24,17 @@ public class MyPagePostListWebServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("1. get방식으로 myPagePostList.html 페이지를 호출한다.");
-		
-		MyPagePostRepository repository =new MyPagePostRepository();
-
-		//임시저장글 목록을 조회한다.
-		List<MyPagePostDTO> list = repository.tempProjectList();
-		
-		System.out.println("3. 데이터베이스 결과 목록 list : "+list);
-		
-		request.setAttribute("tempProjectList", list);
-		
-		//jsp파일 경로
 		request.getRequestDispatcher("/WEB-INF/front/myPagePostList.html").forward(request, response);
 		
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//요청전달데이터 얻기
-		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd");
-		
-		doGet(request, response);
-	}
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//	
+//		doPost(request, response);
+//	}
 
 }
