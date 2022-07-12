@@ -9,10 +9,10 @@ public class MyPagePostDTO {
 	private String userNo;		//유저 번호
 	private String tPTitle;		//제목
 	private String tPContent;		//내용
-	private String tPCreateday;		//생성일		> regDate
-	private String tPDeadlineday;	//종료일		시작일 > stDate stDt		종료일 edDt endDate	
-	private String tPUpdateday;		//수정일		> modDate
-	private String tPDeleteday;		//수정일
+	private String tPCreateday;		//생성일	
+	private String tPDeadlineday;	//종료일				 
+	private String tPUpdateday;		//수정일		
+	private String tPDeleteday;		//삭제일
 	
 	public int gettTNo() {
 		return tTNo;

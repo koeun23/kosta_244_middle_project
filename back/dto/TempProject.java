@@ -12,7 +12,6 @@ public class TempProject {
 	private Date t_p_updateday;
 	private Date t_p_deleteday;
 	
-	// 친절한 용욱이에게 질문!
 	@Override
 	public int hashCode() {
 		return Objects.hash(t_p_no);
@@ -83,4 +82,3 @@ public class TempProject {
 	}
 	
 	
-}
