@@ -17,13 +17,13 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.my.sql.MyConnection;
 
-
-@WebServlet("/noticeview")
-public class NoticeViewServlet extends HttpServlet {
+@WebServlet("/boardview")
+public class BoardViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-    public NoticeViewServlet() {
+ 
+    public BoardViewServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,14 +40,14 @@ public class NoticeViewServlet extends HttpServlet {
 		
 		try {
 			con=MyConnection.getConnection();
-			String selectBoardSQL="SELECT * FROM notice_tb WHERE n_no=?";
+			String selectBoardSQL="SELECT * FROM board_tb WHERE b_no=?";
 			pstmt=con.prepareStatement(selectBoardSQL);
 			pstmt.setString(1, boardNo);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-               int board_no= rs.getInt("n_no");
-               String title=rs.getString("n_title");
-               String content=rs.getString("n_content");
+               int board_no= rs.getInt("b_no");
+               String title=rs.getString("b_title");
+               String content=rs.getString("b_content");
                
                System.out.println(board_no);
                System.out.println(title);
@@ -78,12 +78,10 @@ public class NoticeViewServlet extends HttpServlet {
 			MyConnection.close(rs,pstmt,con);
 		}
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
 }
-
-

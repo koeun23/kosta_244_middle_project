@@ -1,5 +1,7 @@
 $(function(){
+    //queryString에 ?boardNo=1 같은 전달 내용을 찾아요
 	let queryString=location.search;
+    //noticeList에서 받은 boardNo=? 를 서버로 전달해요
 	$.ajax({
 		url: '/back4/noticeview'+ queryString,
 		method: 'get',
