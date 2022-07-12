@@ -45,6 +45,7 @@ public class LoginServlet extends HttpServlet {
 			if(rs.next()) { //로그인 성공인 경우
 				result = "{\"status\": 1}";
 				session.setAttribute("customer", id);
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
