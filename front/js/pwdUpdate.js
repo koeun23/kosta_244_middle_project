@@ -37,6 +37,7 @@ $(function(){
                 //그리고 password 변경이 정상적으로 완료되었으면 status 1?.. 
                 if(jsonObj.status!=0){
                     alert("비밀번호가 성공적으로 변경되었습니다");
+                    location.href="./mainPage.html";
                 }
             },
             error:function(jqXHR){
