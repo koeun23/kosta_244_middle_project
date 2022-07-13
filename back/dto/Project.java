@@ -1,16 +1,12 @@
-package project;
+package dto;
 
-
-
-import java.util.List;
+import java.sql.Date;
 import java.util.Objects;
 
-
-
 public class Project {
-	
+    	
 	private int p_no;
-	private String user_no;
+	private int user_no;
 	private String p_title;
 	private String p_content;
 	private int p_view;
@@ -18,50 +14,45 @@ public class Project {
 	private String p_deadlineday;
 	private String p_updateday;
 	private String p_deleteday;
-	private List<pCategory> p_category; //카테고리 1~3개까지 받을곳 리스트형식
-
 
 	public Project() {
+		
 	}
 	//모든 데이터가 들어가는 생성자
-	public Project(int p_no, String user_no, String p_title, String p_content, int p_view, 
+	public Project(int p_no, int user_no, String p_title, String p_content, int p_views,   
 			String p_createday, String p_deadlineday, String p_updateday, String p_deleteday) {
 		this.p_no = p_no;
 		this.user_no = user_no;
 		this.p_title = p_title;
 		this.p_content = p_content;
-		this.p_view = p_view;
+		this.p_view = p_views;
 		this.p_createday = p_createday;
 		this.p_deadlineday = p_deadlineday;
-		this.p_updateday = p_updateday;;
+		this.p_updateday = p_updateday;
 		this.p_deleteday = p_deleteday;
 	}
 	//not null 값만 들어가는 생성자 (모집글 작성기준)
-	public Project(String user_no, String p_title, String p_content, String p_deadlineday) {
+	public Project(int user_no, String p_title, String p_content,String p_createday, String p_deadlineday) {
 		this.user_no = user_no;
 		this.p_title = p_title;
 		this.p_content = p_content;
+		this.p_createday = p_createday;
 		this.p_deadlineday = p_deadlineday;
 	}
-	public Project(String user_no, String p_title, String p_content) {
-		this.user_no = user_no;
-		this.p_title = p_title;
-		this.p_content = p_content;
-	}
-
+	
 	public int getp_no() {
 		return p_no;
 	}
 
-	public void setp_no(int p_no) {
-		this.p_no = p_no;
+	public void setp_no(int postNo) {
+		this.p_no = postNo;
 	}
 
-	public String getuser_no() {
+	public int getuser_no() {
 		return user_no;
 	}
 
-	public void setuser_no(String user_no) {
+	public void setuser_no(int user_no) {
 		this.user_no = user_no;
 	}
 
@@ -84,7 +75,7 @@ public class Project {
 	public int getP_view() {
 		return p_view;
 	}
-				
+
 	public void setP_view(int p_views) {
 		this.p_view = p_views;
 	}
@@ -120,16 +111,9 @@ public class Project {
 	public void setP_deleteday(String p_deleteday) {
 		this.p_deleteday = p_deleteday;
 	}
-	public Object getCategory() {
-		return null;
-	}
-
-	public List<pCategory> getP_category() {
-		return p_category;
-	}
-	public void setP_category(List<pCategory> p_category) {
-		this.p_category = p_category;
-	}
+	
 
 
+
+}
 }

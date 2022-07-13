@@ -32,11 +32,11 @@ public class CustomerOracleRepository implements CustomerRepository {
 			pstmt=con.prepareStatement(selectcustomerAllSQL);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				int userNo=rs.getInt("userNo");
-				String userId=rs.getString("userId");
-				String userPwd=rs.getString("userPwd");
-				String userName=rs.getString("userName");
-				String userEmail=rs.getString("userEmail");
+				int userNo=rs.getInt("user_no");
+				String userId=rs.getString("user_id");
+				String userPwd=rs.getString("user_pwd");
+				String userName=rs.getString("user_name");
+				String userEmail=rs.getString("user_email");
 		
 //						Map<String,Object> map1=new HashMap<>();
 //						map1.put("prod_no", prod_no);
