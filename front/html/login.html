@@ -1,15 +1,15 @@
-<!--로그인하는 페이지-->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-<script src="./login.js"></script>
+<title>loginPage</title>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../project_js/login.js"></script>
 </head>
 <style>
 	div.all{
-		width:300px;
+		width:400px;
 		margin:auto;
 	}
 	div .id{
@@ -18,16 +18,16 @@
 	div .pwd{
 		width:400px;
 	}
-	div button{
+	div .button{
 		width:400px;
 	}
 </style>
 <body>
      <div class="all">
      	<h1>로그인</h1>
-     	<input type="text" class="id"placeholder="아이디를 입력해주새요"><br>
+     	<input type="text" class="id"placeholder="아이디를 입력해주세요"><br>
      	<input type="password" class="pwd" placeholder="비밀번호를 입력해주세요"><br>
-     	<button type="submit" class="loginBtn">로그인 버튼</button><br>
+     	<input type="submit" class="loginBtn">로그인 버튼<br>
      	<input type="checkbox">아이디 저장
      	<a href="./signup.html">회원가입</a>
      	<a href="./idFind.html">아이디찾기</a>
