@@ -1,3 +1,4 @@
+package com.my.projectservlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,9 +13,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.my.dto.Customer;
 import com.my.sql.MyConnection;
-import com.my.projectdto.*;
+
 
 @WebServlet("/idfind")
 public class IdFindServlet extends HttpServlet {
@@ -37,11 +40,14 @@ public class IdFindServlet extends HttpServlet {
 		//응답결과
 		ResultSet rs=null;
 		String result=null;
+		HttpSession session = request.getSession();
+		session.setAttribute("user_no", name);
+		session.setAttribute("user_id", email);
 		//"{\"status\":0}"
 		try {
 			con=MyConnection.getConnection();
-			String selectIdNPwdSQL="SELECT * FROM customer WHERE user_name=? AND user_email=?";
-			pstmt=con.prepareStatement(selectIdNPwdSQL);
+			String selectIdSQL="SELECT * FROM customer_tb WHERE user_name=? AND user_email=?";
+			pstmt=con.prepareStatement(selectIdSQL);
 			pstmt.setString(1, name);
 			pstmt.setString(2, email);
 			rs=pstmt.executeQuery();

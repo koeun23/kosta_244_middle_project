@@ -1,3 +1,5 @@
+package com.my.projectservlet;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -11,13 +13,15 @@ import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+// import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 public class LoginStatusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String loginedId = (String)session.getAttribute("customer");
+		String loginedId = (String)session.getAttribute("user_no");
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object>map = new HashMap<>();
 		if(loginedId == null) {
@@ -26,7 +30,7 @@ public class LoginStatusServlet extends HttpServlet {
 			map.put("status",  1);
 			
 		}
-		response.setContentType("application/json;charset=UTF-8");;
+		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(mapper.writeValueAsString(map));
 	}
