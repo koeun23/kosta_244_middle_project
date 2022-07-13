@@ -41,10 +41,10 @@ public class PwdUpdateServlet extends HttpServlet {
         //  비밀번호 변경할 때 아이디값을 가져와서 WHERE 절에 해당 아이디 값인 회원정보를 찾아 비밀번호를 UPDATE구문을 이용해 변경
 		try {
 			con=MyConnection.getConnection();
-			String selectIdNPwdSQL="UPDATE customer SET user_pwd=? WHERE user_id=?";//해당 id인 회원정보의 pwd값을 update하자
-			pstmt=con.prepareStatement(selectIdNPwdSQL);
+			String selectPwdSQL="UPDATE customer_tb SET user_pwd=? WHERE user_id=?";//해당 id인 회원정보의 pwd값을 update하자
+			pstmt=con.prepareStatement(selectPwdSQL);
 			pstmt.setString(1, pwd);
-			pstmt.setString(2,id);
+			pstmt.setString(2, id);
 			pstmt.executeUpdate();
 			result="{\"status\":1}";
 		} catch (SQLException e) {

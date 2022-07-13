@@ -1,4 +1,4 @@
-
+package com.my.projectservlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
