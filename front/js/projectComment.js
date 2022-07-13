@@ -3,6 +3,67 @@ const rootDiv = document.querySelector("#comments");
 const btn = document.querySelector("#submit");
 const mainCommentCount = document.querySelector('#count'); //맨위 댓글 숫자 세는거.
 
+function showComments(){
+    $.ajax({
+        url:'/WebProjectPeople/CommentServlet',
+        data: 'p_no=1',
+        success:function(jsonObj){
+          if(jsonObj.status == 0){
+            alert('XXXX');
+            return;
+          }
+          $(jsonObj.comments).each(function(index, commentObj){
+            showComment1(comment);  
+          });
+        }
+});
+}
+//-------------------
+//댓글보여주기
+function showComment1(commentObj){
+    const userName = document.createElement('div');
+    const inputValue = document.createElement('span');
+    const showTime = document.createElement('div');
+    const voteDiv = document.createElement('div');
+    const countSpan = document.createElement('span')
+    const voteUp = document.createElement('button');
+    const voteDown = document.createElement('button');  
+    const commentList = document.createElement('div');  //이놈이 스코프 밖으로 나가는 순간 하나지우면 다 지워지고 입력하면 리스트 다불러옴.
+    //삭제버튼 만들기
+    const delBtn = document.createElement('button');
+    delBtn.className ="deleteComment";
+    delBtn.innerHTML="삭제";
+    commentList.className = "eachComment";
+    userName.className="name";
+    inputValue.className="inputValue";
+    showTime.className="time";
+    voteDiv.className="voteDiv";
+    //유저네임가져오기 
+    // userName.innerHTML = generateUserName();
+    userName.innerHTML = commentObj.c_write_date;    
+    userName.appendChild(delBtn);  
+    //입력값 넘기기
+    inputValue.innerText = commentObj.c_content;
+    //타임스템프찍기
+    // showTime.innerHTML = generateTime();
+    showTime.innerHTML = commentObj.c_write_date
+    countSpan.innerHTML=0;
+
+    //댓글뿌려주기       
+    commentList.appendChild(userName);
+    commentList.appendChild(inputValue);
+    commentList.appendChild(showTime);
+    commentList.appendChild(voteDiv);
+    rootDiv.prepend(commentList);
+
+    voteUp.addEventListener("click",numberCount);
+    voteDown.addEventListener("click",numberCount);
+    delBtn.addEventListener("click",deleteComments);
+   console.dir(rootDiv);
+
+}
+//-------------------
+
 //타임스템프 만들기
 function generateTime(){
     const date = new Date();
@@ -115,4 +176,6 @@ function pressBtn(){
    }
 }
 
-btn.onclick = pressBtn;
+// btn.onclick = pressBtn;
+btn.onclick = showComments();
+showComments();
