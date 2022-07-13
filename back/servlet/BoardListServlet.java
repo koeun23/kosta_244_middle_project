@@ -33,7 +33,6 @@ public class BoardListServlet extends HttpServlet {
     public BoardListServlet() {
         super();
     }
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		response.setContentType("application/json;charset=UTF-8");//ISO_88859_1
 		PrintWriter out=response.getWriter();//응답출력스트림 얻기

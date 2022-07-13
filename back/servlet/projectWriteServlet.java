@@ -25,7 +25,6 @@ public class projectWriteServlet extends HttpServlet {
 
     public projectWriteServlet() {
     }
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
