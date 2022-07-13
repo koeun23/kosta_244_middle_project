@@ -30,7 +30,6 @@ public class NoticeViewServlet extends HttpServlet {
 		response.setContentType("application/json;charset=UTF-8");//ISO_88859_1
 		PrintWriter out=response.getWriter();//응답출력스트림 얻기
 		HttpSession session=request.getSession();
-		
 		String boardNo=request.getParameter("boardNo");
 		
 		Connection con=null;

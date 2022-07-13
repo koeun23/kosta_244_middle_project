@@ -35,7 +35,6 @@ public class BoardWriteServlet extends HttpServlet {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		String result=null;
-		
 		try {
 			con=MyConnection.getConnection();
 			String insertBoardSQL="INSERT INTO board_tb(b_no,user_no,b_title,b_content,b_writeday) VALUES(b_no.NEXTVAL,?,?,?,SYSDATE)";

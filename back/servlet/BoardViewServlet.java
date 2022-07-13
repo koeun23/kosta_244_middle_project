@@ -37,7 +37,6 @@ public class BoardViewServlet extends HttpServlet {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		String result=null;
-		
 		try {
 			con=MyConnection.getConnection();
 			String selectBoardSQL="SELECT * FROM board_tb WHERE b_no=?";
