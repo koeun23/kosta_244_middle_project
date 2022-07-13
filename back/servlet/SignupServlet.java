@@ -33,10 +33,10 @@ public class SignupServlet extends HttpServlet {
 		try {
 			con = MyConnection.getConnection();
 			pstmt = con.prepareStatement(insertSQL);
-			pstmt.setString(1, user_name);
-			pstmt.setString(2, user_id);
-			pstmt.setString(3, user_pwd);
-			pstmt.setString(4, user_email);
+			pstmt.setString(1, name);
+			pstmt.setString(2, id);
+			pstmt.setString(3, pwd);
+			pstmt.setString(4, email);
 			pstmt.executeUpdate();result = "{\"status\":0, \"msg\": \"가입성공\"}";
 			
 		} catch (SQLException e) { 

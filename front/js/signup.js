@@ -17,7 +17,7 @@ $(function(){
     let $btIdchk = $('button.idchk');
     $btIdchk.click(function(){
       $.ajax({
-        url : 'http://localhost:8888/back/idchk',
+        url : 'http://localhost:8888/back/idchkservlet',
         method : 'get',
         data : {id: $inputId.val()},
         success:function(jsonObj){
@@ -51,7 +51,7 @@ $(function(){
     let $btemailchk = $('button.emailchk');
     $btemailchk.click(function(){
       $.ajax({
-        url : 'http://localhost:8888/back/emailchk',
+        url : 'http://localhost:8888/back/emailchkservlet',
         method : 'get',
         data : {id: $inputId.val()},
         success:function(jsonObj){

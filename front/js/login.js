@@ -18,12 +18,13 @@ $(function(){
 				if(jsonObj==1){
 					alert("로그인 성공입니다");
 					location.href="./mainpage.html";
+				}else{
+					alert('로그인 실패');
 				}
 			},
 			error:function(jqXHR){
 				alert(jqXHR.status);
 			},
 		});
-	});
-	
+	});	
 });
