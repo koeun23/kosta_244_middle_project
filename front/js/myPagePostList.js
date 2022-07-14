@@ -1,3 +1,4 @@
+
 $(function(){
 
 	$("#setPostTb").on('click', 'tbody tr', function () {
@@ -28,7 +29,7 @@ $(function(){
 	});
 
 	//post방식으로 임시목록 ajax를 호출한다.
-	HeyJs.fnAjaxPost(
+	HyeJs.fnAjaxPost(
 		{}
 		, "myPageTempSelectList"			//ajax 호출하는 URL
 		, fnAjaxTempCallBack	
@@ -36,7 +37,7 @@ $(function(){
 
 
 	//post방식으로 내가작성한 ajax를 호출한다.
-	HeyJs.fnAjaxPost(
+	HyeJs.fnAjaxPost(
 		{}
 		, "myPagePostSelectList"			//ajax 호출하는 URL
 		, fnAjaxPostCallBack	
@@ -69,7 +70,7 @@ let fnAjaxPostCallBack = function(data){
 		"pageLength": 5,
 		"language": {
 			"emptyTable": "데이터가 없습니다.",
-			"info": "총 _TOTAL_명",
+			"info": "총 _TOTAL_건",
 			"search": "검색 : ",
 			"zeroRecords": "일치하는 데이터가 없습니다.",
 			"paginate": {
@@ -107,7 +108,7 @@ let fnAjaxTempCallBack = function(data){
 		"pageLength": 5,
 		"language": {
 			"emptyTable": "데이터가 없습니다.",
-			"info": "총 _TOTAL_명",
+			"info": "총 _TOTAL_건",
 			"search": "검색 : ",
 			"zeroRecords": "일치하는 데이터가 없습니다.",
 			"paginate": {
