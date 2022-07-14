@@ -1,4 +1,4 @@
-package dto;
+package hye.myPage.dto;
 
 public class MyPagePostDTO {
 	
@@ -8,6 +8,16 @@ public class MyPagePostDTO {
 	private String pTitle;	 		//제목
 	private String pContent; 		//내용
 	private String pCreateday;		//생성일		
+	
+	public MyPagePostDTO() {
+	}
+	
+	public MyPagePostDTO(int pNo, String userNo, String pTitle, String pContent) {
+		this.pNo = pNo;
+		this.userNo = userNo;
+		this.pTitle = pTitle;
+		this.pContent = pContent;
+	}
 	
 	public int getpNo() {
 		return pNo;
