@@ -1,4 +1,4 @@
-package hye.myPage;
+package hye.myPage.dto;
 
 public class MyPageTempDTO {
 	
@@ -12,6 +12,16 @@ public class MyPageTempDTO {
 	private String ptempUpdateday;		//수정일		
 	private String ptempDeadline; 		//종료일	
 	private String ptempDeleteday;		//삭제일
+	
+	public MyPageTempDTO() {
+	}
+	
+	public MyPageTempDTO(int ptempNo, String userNo, String ptempTitle, String ptempContent) {
+		this.ptempNo = ptempNo;
+		this.userNo = userNo;
+		this.ptempTitle = ptempTitle;
+		this.ptempContent = ptempContent;
+	}
 	
 	public int getPtempNo() {
 		return ptempNo;
