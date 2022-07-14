@@ -1,102 +1,317 @@
-package hye.myPage;
+package hye.myPage.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import hye.myPage.dto.MyPagePostDTO;
+import hye.myPage.dto.MyPageTempDTO;
+import hye.myPage.sql.MyConnection;
+
+
 public class MyPagePostRepository {
 
-	Connection con = null;
-    PreparedStatement pstmt = null;
-    ResultSet rs = null;
-
+	
     /*나의 임시글 목록 조회 호출*/
-	public List<MyPagePostDTO> tempProjectList() {
+	public List<MyPageTempDTO> tempProjectList() throws SQLException {
 
-		List<MyPagePostDTO> list = new ArrayList<MyPagePostDTO>();
+		List<MyPageTempDTO> list = new ArrayList<MyPageTempDTO>();
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
 		 
 		try {
 			
-            con = DBConnection.getConnect();
-            String query = "SELECT T_P_NO, USER_NO, T_P_TITLE, T_P_CONTENT, T_P_CREATEDAY, T_P_DEADLINEDAY, T_P_UPDATEDAY, T_P_DELETEDAY FROM TEMP_PROJECT_TB";
-			System.out.println(query);
+            con = MyConnection.getConnection();
+            
+            String query = "SELECT PTEMP_NO, USER_NO, PTEMP_TITLE, PTEMP_CONTENT, TO_CHAR(PTEMP_CREATEDAY,'yyyy-MM-dd') as PTEMP_CREATEDAY, PTEMP_DEADLINE, PTEMP_UPDATEDAY, PTEMP_DELETEDAY FROM P_TEMP_TB";
 			
-			pstmt = con.prepareStatement(query);
+            System.out.println(query);
 			
-			rs = pstmt.executeQuery();
+			stmt = con.prepareStatement(query);
+			
+			rs = stmt.executeQuery(query);
 			
 			while (rs.next()) {
 
-				int tTNo = 				rs.getInt("T_P_NO");			//게시판번호
-				String userNo = 		rs.getString("USER_NO");		//사용자 번호
-				String tPTitle = 		rs.getString("T_P_TITLE");		//제목
-				String tPContent = 		rs.getString("T_P_CONTENT");		//내용
-				String tPCreateday = 	rs.getString("T_P_CREATEDAY");		//생성일
-				String tPDeadlineday = 	rs.getString("T_P_DEADLINEDAY");		//종료일
-				String tPUpdateday = 	rs.getString("T_P_UPDATEDAY");		//수정일
-				String tPDeleteday	=	rs.getString("T_P_DELETEDAY");		//삭제일
+				int ptempNo 			= 		rs.getInt("PTEMP_NO");				//게시판번호
+				String userNo 			= 		rs.getString("USER_NO");			//사용자 번호
+				String ptempTitle	 	= 		rs.getString("PTEMP_TITLE");		//제목
+				String ptempContent 	= 		rs.getString("PTEMP_CONTENT");		//내용
+				String ptempCreateday 	= 		rs.getString("PTEMP_CREATEDAY");	//생성일
+				String ptempUpdateday 	= 		rs.getString("PTEMP_UPDATEDAY");		//수정일
+				String ptempDeadline 	=		rs.getString("PTEMP_DEADLINE");	//삭제일
+				String ptempDeleteday	=		rs.getString("PTEMP_DELETEDAY");	//삭제일
 				
-				MyPagePostDTO dto = new MyPagePostDTO();
+				MyPageTempDTO dto = new MyPageTempDTO();
 				
-				dto.settTNo(tTNo);
+				dto.setPtempNo(ptempNo);
 				dto.setUserNo(userNo);
-				dto.settPTitle(tPTitle);
-				dto.settPContent(tPContent);
-				dto.settPCreateday(tPCreateday);
-				dto.settPDeadlineday(tPDeadlineday);
-				dto.settPUpdateday(tPUpdateday);
-				dto.settPDeleteday(tPDeleteday);
-
+				dto.setPtempTitle(ptempTitle);
+				dto.setPtempContent(ptempContent);
+				dto.setPtempCreateday(ptempCreateday);
+				dto.setPtempUpdateday(ptempUpdateday);
+				dto.setPtempDeleteday(ptempDeleteday);
+				dto.setPtempDeadline(ptempDeadline);
+				
 				list.add(dto);
 				
 			}
 			
-			rs.close();
-			pstmt.close();
-			con.close();
-			
 		} catch (Exception e) {
 			e.printStackTrace();
+			
+		} finally {
+			MyConnection.close(rs,  stmt, con);
 		}
 		
 		return list;
 		
 	}
-	
-    /*게시판 등록 쿼리 호출*/
-	public int boardInsert(MyPagePostDTO myProjectDTO) throws Exception {
 
-		int result = 0;
+	
+	/*나의 작성글 목록 조회 호출*/
+	public List<MyPagePostDTO> postProjectList() throws SQLException {
+
+		List<MyPagePostDTO> list = new ArrayList<MyPagePostDTO>();
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		 
+		try {
+			
+            con = MyConnection.getConnection();
+            
+            String query = "SELECT P_NO, USER_NO, P_TITLE, P_CONTENT, TO_CHAR(P_CREATEDAY,'yyyy-MM-dd') as P_CREATEDAY, P_DEADLINEDAY, P_UPDATEDAY, P_DELETEDAY FROM PROJECT_TB";
+			
+            System.out.println(query);
+			
+			stmt = con.prepareStatement(query);
+			
+			rs = stmt.executeQuery(query);
+			
+			while (rs.next()) {
+
+				int pNo 			= 		rs.getInt("P_NO");				//게시판번호
+				String userNo 			= 		rs.getString("USER_NO");			//사용자 번호
+				String pTitle	 	= 		rs.getString("P_TITLE");		//제목
+				String pContent 	= 		rs.getString("P_CONTENT");		//내용
+				String pCreateday 	= 		rs.getString("P_CREATEDAY");	//생성일
+				String pUpdateday 	= 		rs.getString("P_UPDATEDAY");		//수정일
+				String pDeadline 	=		rs.getString("P_DEADLINEDAY");			//삭제일
+				String pDeleteday	=		rs.getString("P_DELETEDAY");	//삭제일
+				
+				MyPagePostDTO dto = new MyPagePostDTO();
+				
+				dto.setpNo(pNo);
+				dto.setUserNo(userNo);
+				dto.setpTitle(pTitle);
+				dto.setpContent(pContent);
+				dto.setpCreateday(pCreateday);
+				
+				
+				list.add(dto);
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			MyConnection.close(rs,  stmt, con);
+		}
 		
-		//Q. 쿼리는 에러가 날 수 밖에 없다. 게시판번호 컬럼에 값을 넣어주는 부분이 없기 때문
-		final String query = "INSERT INTO BBOARD(BOARDNUM, BOARDWRITER, BOARDTITLE, BOARDCONTENT) VALUES(?, ?, ?, ?)";
+		return list;
+		
+	}
+
+	/*나의 글 상세 조회*/
+	public MyPagePostDTO myPagePostSelectView(int pNo) throws SQLException {
+		
+		Connection con = null;
+
+		PreparedStatement ppst = null;
+		
+		ResultSet rs = null;
+		
+		MyPagePostDTO dto = null;
 		
 		try {
 			
-			//con = DBConnection.getConnect();
-			//pstmt = con.prepareStatement(query);
-			
-			//pstmt.setString(1, myProjectDTO.getBoardWriter());
-			//pstmt.setString(2, myProjectDTO.getBoardTitle());
-			//pstmt.setString(3, myProjectDTO.getBoardWriter());
+            con = MyConnection.getConnection();
 
-			//insert 성공하면 1 int 값 리턴
-			result  = pstmt.executeUpdate();
+            ppst = con.prepareStatement("SELECT P_NO, USER_NO, P_TITLE, P_CONTENT, TO_CHAR(P_CREATEDAY,'yyyy-MM-dd') as P_CREATEDAY, P_DEADLINEDAY, P_UPDATEDAY, P_DELETEDAY FROM PROJECT_TB WHERE P_NO = ? ");
+            
+            ppst.setInt(1,pNo);
 			
-		} catch(Exception e) {
-			throw e;
-		} finally {
-			try {
-				if(con != null) con.close();
-				if(pstmt != null) pstmt.close();
-			} catch(Exception e) {
-				e.printStackTrace();
+			rs = ppst.executeQuery();
+			
+			// no에 해당하는 데이터베이스의 데이터를 mem에 할당
+			if (rs.next()) {
+				dto = new MyPagePostDTO();
+				dto.setpNo(rs.getInt("P_NO"));
+				dto.setpTitle(rs.getString("P_TITLE"));
+				dto.setUserNo(rs.getString("USER_NO"));
+				dto.setpContent(rs.getString("P_CONTENT"));
+				dto.setpCreateday(rs.getString("P_CREATEDAY"));
 			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			MyConnection.close(rs, ppst, con);
+		}
+		
+		return dto; // mem 리턴
+	}
+
+	
+	/*나의 임시글 상세 조회*/
+	public MyPageTempDTO postTempSelectView(int pNo) throws SQLException {
+		
+		Connection con = null;
+
+		PreparedStatement ppst = null;
+		
+		ResultSet rs = null;
+		
+		MyPageTempDTO dto = null;
+		
+		try {
+			
+            con = MyConnection.getConnection();
+
+            ppst = con.prepareStatement("SELECT PTEMP_NO, USER_NO, PTEMP_TITLE, PTEMP_CONTENT, TO_CHAR(PTEMP_CREATEDAY,'yyyy-MM-dd') as PTEMP_CREATEDAY, PTEMP_DEADLINE, PTEMP_UPDATEDAY, PTEMP_DELETEDAY FROM P_TEMP_TB WHERE PTEMP_NO = ? ");
+            
+            ppst.setInt(1,pNo);
+			
+			rs = ppst.executeQuery();
+			
+			
+			
+			// no에 해당하는 데이터베이스의 데이터를 dto에 할당
+			if (rs.next()) {
+				dto = new MyPageTempDTO();
+				dto.setPtempNo(rs.getInt("PTEMP_NO"));
+				dto.setPtempTitle(rs.getString("PTEMP_TITLE"));
+				dto.setPtempContent(rs.getString("PTEMP_CONTENT"));
+				dto.setUserNo(rs.getString("USER_NO"));
+				dto.setPtempCreateday(rs.getString("PTEMP_CREATEDAY"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			MyConnection.close(rs, ppst, con);
+		}
+		
+		return dto; // mem 리턴
+	}	
+	
+    /*입시저장 수정하기*/
+	public int postTempUpdate(MyPageTempDTO dto) throws Exception {
+
+		Connection con = null;
+		PreparedStatement ppst = null;
+		ResultSet rs = null;
+		
+		int result = 0;
+		
+		final String query = "UPDATE P_TEMP_TB SET PTEMP_TITLE = ?, PTEMP_CONTENT = ? WHERE PTEMP_NO = ?";
+		
+		try {
+			
+			con = MyConnection.getConnection();
+			ppst = con.prepareStatement(query);
+			
+			ppst.setString(1, dto.getPtempTitle());
+			ppst.setString(2, dto.getPtempContent());
+			ppst.setInt(3, dto.getPtempNo());
+
+			//insert, update, delete 성공하면 1 int 값 리턴
+			result  = ppst.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			MyConnection.close(rs, ppst, con);
 		}
 		
 		return result;
 	}
+
+    /*입시저장 삭제하기*/
+	public int postTempDelete(MyPageTempDTO dto) throws Exception {
+
+		Connection con = null;
+		PreparedStatement ppst = null;
+		ResultSet rs = null;
+		
+		int result = 0;
+		
+		final String query = "DELETE FROM P_TEMP_TB WHERE PTEMP_NO = ? ";
+		
+		try {
+			
+			con = MyConnection.getConnection();
+			ppst = con.prepareStatement(query);
+			
+			ppst.setInt(1, dto.getPtempNo());
+
+			//insert, update, delete 성공하면 1 int 값 리턴
+			result  = ppst.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			MyConnection.close(rs, ppst, con);
+		}
+		
+		return result;
+
+	}
+
+    /*입시글의 내용 > 모집글로 복사*/
+	public int postTempCopyForProject(MyPageTempDTO dto) throws Exception {
+
+		Connection con = null;
+		PreparedStatement ppst = null;
+		ResultSet rs = null;
+		
+		int result = 0;
+		
+		final String query = "INSERT INTO PROJECT_TB (P_NO, USER_NO, P_TITLE, P_CONTENT, P_CREATEDAY, P_DEADLINEDAY) VALUES(  (SELECT NVL(MAX(P_NO), 0) + 1 FROM PROJECT_TB), ?, ?, ? , SYSDATE, SYSDATE )";
+		
+		try {
+			
+			con = MyConnection.getConnection();
+			ppst = con.prepareStatement(query);
+			
+			ppst.setString(1, dto.getUserNo());
+			ppst.setString(2, dto.getPtempTitle());
+			ppst.setString(3, dto.getPtempContent());
+
+			//insert, update, delete 성공하면 1 int 값 리턴
+			result  = ppst.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			MyConnection.close(rs, ppst, con);
+		}
+		
+		return result;
+	}
+	
 
 }
