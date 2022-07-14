@@ -1,4 +1,4 @@
-package hye.myPage;
+package hye.myPage.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -28,7 +28,7 @@ public class MyPagePostListWebServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("1. get방식으로 myPagePostList.html 페이지를 호출한다.");
-		request.getRequestDispatcher("/WEB-INF/front/myPagePostList.html").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/front/html/myPagePostList.html").forward(request, response);
 		
 	}
 
