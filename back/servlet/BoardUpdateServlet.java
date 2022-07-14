@@ -17,13 +17,14 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.my.sql.MyConnection;
 
-
-@WebServlet("/noticeview")
-public class NoticeViewServlet extends HttpServlet {
+@WebServlet("/boardupdate")
+public class BoardUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-    public NoticeViewServlet() {
+       
+  
+    public BoardUpdateServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,45 +33,33 @@ public class NoticeViewServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		
 		String boardNo=request.getParameter("boardNo");
+		String boardTitle=request.getParameter("boardTitle");
+		String boardContent=request.getParameter("boardContent");
 		
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String result=null;
+		String result="{\"status\":0}";
 		
+		
+         ObjectMapper mapper = new ObjectMapper();
+         Map<String, Object>map = new HashMap<>();
+         map.put("boardnum", boardNo);
+         map.put("boardtitle", boardTitle);
+         map.put("boardText", boardContent);
+         result = mapper.writeValueAsString(map);
+         
+         
 		try {
 			con=MyConnection.getConnection();
-			String selectBoardSQL="SELECT * FROM notice_tb WHERE n_no=?";
+			String selectBoardSQL="UPDATE board_tb SET b_title=?,b_content=?,b_updateday=SYSDATE WHERE b_no=?";
 			pstmt=con.prepareStatement(selectBoardSQL);
-			pstmt.setString(1, boardNo);
+			pstmt.setString(1, boardTitle);
+			pstmt.setString(2, boardContent);
+			pstmt.setString(3, boardNo);
 			rs=pstmt.executeQuery();
-			if(rs.next()) {
-               int board_no= rs.getInt("n_no");
-               String title=rs.getString("n_title");
-               String content=rs.getString("n_content");
-               
-               System.out.println(board_no);
-               System.out.println(title);
-               System.out.println(content);
-               
-               ObjectMapper mapper = new ObjectMapper();
-               Map<String, Object>map = new HashMap<>();
-               map.put("boardnum", board_no);
-               map.put("boardText", content);
-               map.put("boardtitle", title);
-               result = mapper.writeValueAsString(map);
-               out.print(result);
-               
-//               out.println("<html><head></head><body>");
-//               out.println("<h1>"+board_no+"</h1>");
-//               out.println("<h3>"+title+"</h3>");
-//               out.println("<p>"+content+"</p>");
-//               out.println("</body></html>");
-
-		    }else {//입력한 정보와 일치하는 게시글이 없으면
-				result="{\"status\":0}";
-				 out.print(result);
-			}
+			map.put("status",1);
+			out.print(result);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -79,7 +68,6 @@ public class NoticeViewServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

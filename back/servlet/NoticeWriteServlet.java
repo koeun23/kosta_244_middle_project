@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,12 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.my.sql.MyConnection;
 
-
-@WebServlet("/boardwrite")
-public class BoardWriteServlet extends HttpServlet {
+@WebServlet("/noticewrite")
+public class NoticeWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
@@ -38,7 +34,7 @@ public class BoardWriteServlet extends HttpServlet {
 		
 		try {
 			con=MyConnection.getConnection();
-			String insertBoardSQL="INSERT INTO board_tb(b_no,user_no,b_title,b_content,b_writeday) VALUES(b_no.NEXTVAL,?,?,?,SYSDATE)";
+			String insertBoardSQL="INSERT INTO notice_tb(n_no,user_no,n_title,n_content,n_writeday) VALUES(n_no.NEXTVAL,?,?,?,SYSDATE)";
 			pstmt=con.prepareStatement(insertBoardSQL);
 			pstmt.setInt(1, 1);//회원번호를 어떻게 받을까,,, 로그인 세션을 통해서 받아야할 것 같은데... 
 			pstmt.setString(2, title);
@@ -51,8 +47,8 @@ public class BoardWriteServlet extends HttpServlet {
 		}finally {
 			MyConnection.close(rs,pstmt,con);
 		}
+		out.print(result);
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
