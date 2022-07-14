@@ -1,4 +1,4 @@
-package servlet;
+package hye.myPage.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -33,18 +33,22 @@ public class MyPagePostViewWebServlet extends HttpServlet {
 		
 		//목록에서 일반인지, 임시인지 
 		String type = request.getParameter("type").toString();
+		
+		//글 번호
+		String pNo = request.getParameter("pNo").toString();
+		
 		System.out.println(type);
 		
 		if("T".equals(type)) {
 			html = "postTempView.html";
 		}else{
-			html = "myPostView.html";			
+			html = "myPagePostView.html";			
 		}
 
 		System.out.println(html);		
 		
 		//html파일 경로
-		request.getRequestDispatcher("/WEB-INF/front/"+html).forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/front/html/"+html).forward(request, response);
 	}
 
 	/**
