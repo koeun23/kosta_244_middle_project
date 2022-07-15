@@ -1,18 +1,7 @@
+
+//select id로 선택된 값 일기
 $(function(){
-    //임시저장 눌렀을때
-    //저장 눌렀을때
-    // 취소하기 눌렀을떄???
-    //
-
-
-    //저장 눌렀을때
-    $("button.")
-    $.ajax({
-        url:,
-        method:'post',
-        data:,
-        success:function(jsonObj){
-            
-        }
-    })
+	$("input[name=save]").click(function(){
+		location.href="http://localhost:8888/project1/html/projectList.html";
+	});
 });

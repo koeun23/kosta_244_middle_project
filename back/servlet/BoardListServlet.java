@@ -33,6 +33,7 @@ public class BoardListServlet extends HttpServlet {
     public BoardListServlet() {
         super();
     }
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		response.setContentType("application/json;charset=UTF-8");//ISO_88859_1
 		PrintWriter out=response.getWriter();//응답출력스트림 얻기
@@ -111,3 +112,13 @@ public class BoardListServlet extends HttpServlet {
 	}
 
 }
+//DB에 자유기시판글이 하나 이상 있다면 
+//나는 SELECT문에 있는 board_tb를 모두 html에 넣어주고 싶어요
+//map.put("status",1);
+//map.put("p",rs);
+//
+////map 객체를 이용 --------
+//String jsonValue=mapper.writeValueAsString(map);
+//System.out.println("jsonValue:"+jsonValue);
+//out.print(jsonValue);
+
