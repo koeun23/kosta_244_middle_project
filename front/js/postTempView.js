@@ -1,5 +1,6 @@
 $(function(){
 
+
 	//url에 있는 특정 
 	let getPNo = HyeJs.fnGetUrlParam("pNo",location.href);
 	console.log('getPNo');
@@ -26,10 +27,9 @@ $(function(){
 			{ ptempNo : getPNo }
 			, "postTempDelete"	//ajax 호출하는 URL
 			, deleteCallback
-		);
+			);
+		});
 	});
-	
-});
 
 /****************************************
 * @author hye
@@ -60,11 +60,7 @@ let deleteCallback = function(data){
 	}else {
 		alert("삭제 실패");
 	}
-	
-	
-}
-}
-}
+};
 
 
-	)
+	
