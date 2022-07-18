@@ -24,19 +24,6 @@ $(function(){
 			, updateCallBack	
 		);
 	});
-
-	//저장하기 버튼
-	$('#btnSave').click(function(){
-
-		//form 태그의 모든 값을 json 형태로 만든다.
-		let serializedValues = $('#frm').serializeObject()
-		
-		HyeJs.fnAjaxPost(
-			serializedValues	//form 태그의 모든 값을 json 형태로 만든다.
-			, "postTempInsert"	//ajax 호출하는 URL
-			, saveCallBack	
-		);
-	});
 	
 });
 
@@ -54,23 +41,6 @@ let fnAjaxPostCallBack = function(data){
 	
 }
 
-/****************************************
-* @author hye
-* @desc 저장하기 ajax 콜백함수
-​*/ 
-let saveCallBack = function(data){
-	
-	console.log('saveCallBack');
-	console.log(data);
-	
-	if(data.response > 0){
-		alert("저장 완료");	
-		location.href="myPagePostList";
-	}else {
-		alert("수정 실패");
-	}
-	
-}
 
 /****************************************
 * @author hye
@@ -82,11 +52,16 @@ let updateCallBack = function(data){
 	console.log(data);
 	
 	if(data.response > 0){
-		alert("수정 완료");		
+	 	Swal.fire({
+	    	icon: 'success', // Alert 타입 
+	        title: '수정완료', // Alert 제목 
+	 	});	
 	}else {
-		alert("수정 실패");
+	 	Swal.fire({
+	    	icon: 'warning', // Alert 타입 
+	        title: '수정실패', // Alert 제목 
+	 	});
 	}
 	
 }
-
 
