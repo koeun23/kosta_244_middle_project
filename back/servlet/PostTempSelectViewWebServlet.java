@@ -45,7 +45,7 @@ public class PostTempSelectViewWebServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("myPagePostSelectView ajax를 doPost로 호출한다. ");
+		System.out.println("postTempSelectView ajax를 doPost로 호출한다. ");
 		
 		//글 번호
 		int pNo = Integer.parseInt(request.getParameter("pNo").toString());
