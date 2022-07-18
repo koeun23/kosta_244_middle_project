@@ -61,7 +61,7 @@ public class MyPagePostRepository {
 				
 				list.add(dto);
 				
-			}
+			}  
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -209,7 +209,7 @@ public class MyPagePostRepository {
 			e.printStackTrace();
 			
 		} finally {
-			MyConnection.close(rs, ppst, con);
+		MyConnection.close(rs, ppst, con);
 		}
 		
 		return dto; // mem 리턴
@@ -280,6 +280,9 @@ public class MyPagePostRepository {
 
 	}
 
+	
+	
+	
     /*입시글의 내용 > 모집글로 복사*/
 	public int postTempCopyForProject(MyPageTempDTO dto) throws Exception {
 
@@ -313,5 +316,69 @@ public class MyPagePostRepository {
 		return result;
 	}
 	
+	 /* 나의 모집글 수정하기*/
+	public int myPagePostUpdate(MyPagePostDTO dto) throws Exception {
+
+		Connection con = null;
+		PreparedStatement ppst = null;
+		ResultSet rs = null;
+		
+		int result = 0;
+		
+		final String query = "UPDATE PROJECT_TB SET P_TITLE = ?, P_CONTENT = ? WHERE P_NO = ?";
+		
+		try {
+			
+			con = MyConnection.getConnection();
+			ppst = con.prepareStatement(query);
+			
+			ppst.setString(1, dto.getpTitle());
+			ppst.setString(2, dto.getpContent());
+			ppst.setInt(3, dto.getpNo());
+
+			//insert, update, delete 성공하면 1 int 값 리턴
+			result  = ppst.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			MyConnection.close(rs, ppst, con);
+		}
+		
+		return result;
+	}
+
+    /* 나의 모집글 삭제하기 */
+	public int myPagePostDelete(MyPagePostDTO dto) throws Exception {
+
+		Connection con = null;
+		PreparedStatement ppst = null;
+		ResultSet rs = null;
+		
+		int result = 0;
+		
+		final String query = "DELETE FROM PROJECT_TB WHERE P_NO = ? ";
+		
+		try {
+			
+			con = MyConnection.getConnection();
+			ppst = con.prepareStatement(query);
+			
+			ppst.setInt(1, dto.getpNo());
+
+			//insert, update, delete 성공하면 1 int 값 리턴
+			result  = ppst.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			MyConnection.close(rs, ppst, con);
+		}
+		
+		return result;
+
+	}	
 
 }
