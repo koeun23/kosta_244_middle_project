@@ -1,4 +1,10 @@
 
+
+
+//on click 과 click의차이, on은 동적생성된 태에 이벤트가 바인딩된다.
+//그냥click은 미리 생성된 태그에만 이벤트가 바인딩된다.
+//$("#selector").on("click", "li", function(event){})
+//$("#selector").click(function(){});
 $(function(){
 
 	$("#setPostTb").on('click', 'tbody tr', function () {
