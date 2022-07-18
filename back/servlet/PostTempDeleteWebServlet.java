@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import hye.myPage.dto.MyPagePostDTO;
 import hye.myPage.dto.MyPageTempDTO;
 import hye.myPage.dto.ResultDTO;
 import hye.myPage.repository.MyPagePostRepository;
@@ -36,40 +35,6 @@ public class PostTempDeleteWebServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("postTempDelete ajax를 doPost로 호출한다. ");
-
-		// ResultDTO란???? ajax 응답결과를 공통 보여주게 한다.
-		ResultDTO<Integer> resp = new ResultDTO<>();
-
-		int result = 0;
-
-		// 글 번호
-		String ptempNo = request.getParameter("ptempNo");
-
-		System.out.println("ptempNo : " + ptempNo);
-
-		MyPagePostRepository repository = new MyPagePostRepository();
-
-		MyPageTempDTO dto = new MyPageTempDTO();
-
-		dto.setPtempNo(Integer.parseInt(ptempNo));
-
-		try {
-			// repository에서 delete sql문이 성공하면 1을 반환한다.
-			result = repository.postTempDelete(dto);
-
-			// 에러가 발생시 처리한다. 응답 response에 오류를 알린다.
-			resp.setResponse(result);
-		} catch (Exception e) {
-			resp.setMessage(e.toString());
-			resp.setCheck(false);
-		}
-
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-		// Gson 라이브러리로 json을 리턴한다.
-		new Gson().toJson(resp, response.getWriter());
-
 	}
 
 	/**
@@ -119,3 +84,4 @@ public class PostTempDeleteWebServlet extends HttpServlet {
 	}
 
 }
+
