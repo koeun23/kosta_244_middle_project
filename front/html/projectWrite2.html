@@ -1,4 +1,4 @@
-<!--모집글 작성페이지-->
+ <!--모집글 작성페이지-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,8 +9,8 @@
         <link rel="stylesheet" href="#.css">
         <!-- css 파일은 각자 생성해서 href에 링크 넣어주세요 -->
         <!-- <script src="https://ajax.googleapis.com/ajax/lib/jquery/3.6.0/jquery.min.js"></script> -->
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="projectWrite.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+       <!--  <script src="projectWrite.js"></script> -->
         <!-- js파일명은 각자 수정해주세요 -->
         
     </head>
@@ -44,7 +44,7 @@
                     <label>카테고리 선택</label>
                 </div>
            
-            <select class="location">
+            <select name="location" id="location-select" >
                 <option>지역을 선택하세요</option>
                 <option>101 서울특별시</option>
                 <option>102 경기도</option>
@@ -64,7 +64,7 @@
                 
                
             </select>
-            <select class="career">
+            <select name="career">
                 <option>경력을 선택하세요</option>
                 <option>201 2년 미만</option>
                 <option>202 5년 미만</option>
@@ -73,8 +73,8 @@
           
             </select>
             
-             <select class="field">
-                <option selected>분야를 선택하세요</option>
+             <select name="field">
+                <option>분야를 선택하세요</option>
                 <option>301 논문/리서치/연구/개발</option>
                 <option>302 취업/창업 </option>
                 <option>303 영상/사진</option>
@@ -117,7 +117,7 @@
         <fieldset>
             <a href="http://localhost:8888/project1/html/projectView.html" >취소</a>
             <input type="submit" name="tmp_save" value="임시저장">
-		    <input type="submit" name="save" value="저장" onclick="return inputCheck();" >
+		    <input type="submit" name="save" value="저장" onclick="return inputCheck(); location.href='projectList.html'">
         </fieldset>
         </form>
     </body>

@@ -1,8 +1,6 @@
 package hye.myPage.servlet;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,47 +17,66 @@ import hye.myPage.repository.MyPagePostRepository;
 /**
  * Servlet implementation class MyPageWebServlet
  */
-@WebServlet("/postTempSelectView")
-public class PostTempSelectViewWebServlet extends HttpServlet {
+@WebServlet("/myPagePostUpdate")
+public class MyPagePostUpdateWebServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PostTempSelectViewWebServlet() {
+    public MyPagePostUpdateWebServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    /*
+    * 	나의 모집글 수정페이지 이동
+    */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		doGet(request, response);
+		request.getRequestDispatcher("/WEB-INF/front/html/myPagePostUpdate.html").forward(request, response);
 
 	}
 
 	/**
-	 * 나의 작성글을 상세 조회한다.
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("postTempSelectView ajax를 doPost로 호출한다. ");
-		
-		//글 번호
-		int pNo = Integer.parseInt(request.getParameter("pNo").toString());
+		System.out.println("myPagePostUpdate ajax를 doPost로 호출한다. ");
 
 		//ResultDTO란???? ajax 응답결과를 공통 보여주게 한다.
-		ResultDTO<MyPageTempDTO> resp = new ResultDTO<>();
+		ResultDTO<Integer> resp = new ResultDTO<>();
+		
+		int result = 0;
+		
+		//글 번호
+		String pNo = request.getParameter("pNo");
+		//제목
+		String pTitle = request.getParameter("pTitle");
+		//내용
+		String pContent = request.getParameter("pContent");
+		//사용자
+		String userNo = request.getParameter("userNo");
+		
+		System.out.println("pNo 		: 	"+pNo);
+		System.out.println("pTitle		: "+pTitle);
+		System.out.println("pContent	: "+pContent);
+		System.out.println("userNo 		: "+userNo);
 		
 		MyPagePostRepository repository =new MyPagePostRepository();
+		
+		MyPagePostDTO dto = new MyPagePostDTO(Integer.parseInt(pNo), userNo, pTitle, pContent);
 
 		try {
 			//임시저장글 상세를 조회한다.
-			MyPageTempDTO dto = repository.postTempSelectView(pNo);
+			result = repository.myPagePostUpdate(dto);
+			
 			// 에러가 발생시 처리한다. 응답 response에 오류를 알린다.
-			resp.setResponse(dto);
+			resp.setResponse(result);
 		} catch (Exception e) {
 			resp.setMessage(e.toString());
 			resp.setCheck(false);

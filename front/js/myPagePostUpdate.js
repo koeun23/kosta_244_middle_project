@@ -8,7 +8,7 @@ $(function(){
 	//post방식으로 나의임시글 ajax를 호출한다.
 	HyeJs.fnAjaxPost(
 		{ pNo : getPNo }
-		, "postTempSelectView"	//ajax 호출하는 URL
+		, "myPagePostSelectView"	//ajax 호출하는 URL
 		, fnAjaxPostCallBack	
 	);
 	
@@ -19,8 +19,8 @@ $(function(){
 		let serializedValues = $('#frm').serializeObject()
 
 		HyeJs.fnAjaxPost(
-			serializedValues		//form 태그의 모든 값을 json 형태로 만든다.
-			, "postTempUpdate"		//ajax 호출하는 URL
+			serializedValues			//form 태그의 모든 값을 json 형태로 만든다.
+			, "myPagePostUpdate"		//ajax 호출하는 URL
 			, updateCallBack	
 		);
 	});

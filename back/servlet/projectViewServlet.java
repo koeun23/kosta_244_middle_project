@@ -2,9 +2,7 @@ package project;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -17,66 +15,64 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import exception.FindException;
 
+
 /**
- * Servlet implementation class projectListServlet
+ * Servlet implementation class projectViewServlet
  */
-@WebServlet("/projectList")
-public class projectListServlet extends HttpServlet {
+@WebServlet("/projectView")
+public class projectViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public projectListServlet() {
+    public projectViewServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json;charset=utf-8");
-//		response.setContentType("text/plain;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		projectRepository repo = new projectRepository();
-		List<Project> projects;
+		Project p = null;
+		String result;
+		ObjectMapper mapper =  new ObjectMapper();
+		Map<String, Object> map = new HashMap<>();
+//		objectmmapper로 json 문자열 만듬
 		try {
-			projects = repo.selectAll();
-			
+			String P_no= request.getParameter("p_no");
+			int p_no=Integer.parseInt(P_no);
+			p = repo.selectByprojectNumber(p_no);
+			map.put("status", 1);
+			map.put("project", p);
 		}catch(FindException e){
 			e.printStackTrace();
-			projects = new ArrayList<>();
+			map.put("status", 0);
+			map.put("msg", e.getMessage());
 			
 		}
-		ObjectMapper mapper = new ObjectMapper();
-		String result = mapper.writeValueAsString(projects);
-//		String result = "[";
-//		for(int i=0; i<projects.size(); i++) {
-//			if(i>0) {
-//				result += ",";
-//			}
-//			Project p = projects.get(i);
-//
-//			result +="{";
+//		//:
+//		String result = mapper.writeValueAsString(map);
+//		String result ="{";
 //			result +="\"p_no\":";  result +="\""+p.getp_no()+"\"";   result +=",";
 //			result +="\"p_title\":";    result +="\""+p.getP_title()+"\"";    result +=",";
 //			result +="\"p_content\":";  result +="\""+p.getP_content()+"\"";   result +=",";
 //			result +="\"p_userno\":";  result +="\""+p.getuser_no()+"\"";   result +=",";
 //			result +="\"p_createday\":";  result +="\""+p.getP_createday()+"\"";   result +=",";
 //			result +="\"p_view\":";  result +="\""+p.getP_view()+"\"";
-////			result +="\"p_deadlineday\":"; result +=p.getP_deadlineday(); //숫자는 \" 필요없음
+//			result +="\"p_deadlineday\":"; result +=p.getP_deadlineday(); //숫자는 \" 필요없음
 //			result +="}"; //json문자열
-//		}
-//	
 //		
+		
+		
 //		result += "]";
-		
-		out.print(result); 
-		
-		
 
+		result = mapper.writeValueAsString(map);
+		out.print(result);
 	}
- 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+	
+
+
 
 }

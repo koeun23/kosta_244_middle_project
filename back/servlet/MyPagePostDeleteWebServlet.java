@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import hye.myPage.dto.MyPagePostDTO;
 import hye.myPage.dto.MyPageTempDTO;
 import hye.myPage.dto.ResultDTO;
 import hye.myPage.repository.MyPagePostRepository;
@@ -16,14 +17,14 @@ import hye.myPage.repository.MyPagePostRepository;
 /**
  * Servlet implementation class MyPageWebServlet
  */
-@WebServlet("/postTempDelete")
-public class PostTempDeleteWebServlet extends HttpServlet {
+@WebServlet("/myPagePostDelete")
+public class MyPagePostDeleteWebServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public PostTempDeleteWebServlet() {
+	public MyPagePostDeleteWebServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -35,8 +36,7 @@ public class PostTempDeleteWebServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	}
-
+	}		
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -47,7 +47,7 @@ public class PostTempDeleteWebServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.println("postTempDelete ajax를 doPost로 호출한다. ");
+		System.out.println("myPagePostDelete ajax를 doPost로 호출한다. ");
 
 		// ResultDTO란???? ajax 응답결과를 공통 보여주게 한다.
 		ResultDTO<Integer> resp = new ResultDTO<>();
@@ -55,19 +55,19 @@ public class PostTempDeleteWebServlet extends HttpServlet {
 		int result = 0;
 
 		// 글 번호
-		String ptempNo = request.getParameter("ptempNo");
+		String pNo = request.getParameter("pNo");
 
-		System.out.println("ptempNo : " + ptempNo);
+		System.out.println("pNo : " + pNo);
 
 		MyPagePostRepository repository = new MyPagePostRepository();
 
-		MyPageTempDTO dto = new MyPageTempDTO();
+		MyPagePostDTO dto = new MyPagePostDTO();
 
-		dto.setPtempNo(Integer.parseInt(ptempNo));
+		dto.setpNo(Integer.parseInt(pNo));
 
 		try {
 			// repository에서 delete sql문이 성공하면 1을 반환한다.
-			result = repository.postTempDelete(dto);
+			result = repository.myPagePostDelete(dto);
 
 			// 에러가 발생시 처리한다. 응답 response에 오류를 알린다.
 			resp.setResponse(result);

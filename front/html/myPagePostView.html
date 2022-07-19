@@ -8,8 +8,14 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<!-- 테마 -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 		<!-- 자바스크립트 -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		<!-- alert style library  -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	</head>
 	<body class="sb-nav-fixed">
 		<main class="mt-5 pt-5">
@@ -17,40 +23,36 @@
 			<h1 class="mt-4">일반 상세보기</h1>
 			<div class="card mb-4">
 				<div class="card-body">
-					<form>
+					<form id="frm" name="frm">
 						<div class="mb-3 mt-3">
-							<label for="bno" class="form-label">게시판 번호</label> <input type="text"
-								class="form-control" id="bno" name="bno" value="1"
-								disabled>
+							<label for="bno" class="form-label">게시판 번호</label> 
+							<input type="text" class="form-control" id="pNo" name="pNo" value="" readOnly>
+						</div>
+						<div class="mb-3">
+							<label for="writer" class="form-label">작성자</label> 
+							<input type="text" class="form-control" id="userNo" name="userNo" value="" readOnly>
 						</div>
 						<div class="mb-3">
 							<label for="title" class="form-label">제목</label> <input
-								type="text" class="form-control" id="title" name="title" value="테스트제목"
-								value="" disabled>
+								type="text" class="form-control" id="pTitle" name="pTitle" value="" readOnly>
 						</div>
 						<div class="mb-3">
 							<label for="content" class="form-label">내용</label>
-							<textarea class="form-control" id="content" name="content"
-								disabled>테스트 내용</textarea>
+							<textarea class="form-control" id="pContent" name="pContent" readOnly></textarea>
 						</div>
 						<div class="mb-3">
-							<label for="regDate" class="form-label">등록일</label> <input
-								type="text" class="form-control" id="regDate" name="regDate" value="2022.07.09"
-								value="" disabled>
+							<label for="regDate" class="form-label">등록일</label> 
+							<input type="text" class="form-control" id="pCreateday" name="pCreateday" value="" readOnly>
 						</div>
-						<div class="mb-3">
-							<label for="writer" class="form-label">작성자</label> <input
-								type="text" class="form-control" id="writer" name="writer" value="hye"
-								value="" disabled>
-						</div>
-						<a href="myPagePostList" class="btn btn-outline-secondary">목록으로</a> <a
-							href="" class="btn btn-outline-warning">수정하기</a>
-						<a href="" class="btn btn-outline-danger"
-							onclick="return confirm('삭제하시겠습니까?')">삭제하기</a>
+						<a href="myPagePostList" class="btn btn-outline-secondary">목록으로</a> 
+						<a href="#" class="btn btn-outline-warning" id="btnUpt">수정하기</a>
+						<a href="#" class="btn btn-outline-danger" id="btnDel">삭제하기</a>
 					</form>
 				</div>
 			</div>
 		</div>
 		</main>
+		<script src="js/hye.js"></script>	<!-- ajax공통 스크립트 임포트 -->
+		<script src="js/myPagePostView.js"></script>	<!-- 페이지에서 사용하는 스크립ㅌ즈 임포트 -->
 	</body>
 </html>
