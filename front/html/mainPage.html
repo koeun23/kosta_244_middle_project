@@ -96,6 +96,9 @@
               <div name="mypage" id="mypage_id">
                 <a href="myInfoView.html" id="myInfo_id">mypage</a>
               </div>
+              <div name="search" class="search_tag">
+                <a href="searchResult.html">search</a>
+              </div>
               
             </div>
             <nav>
@@ -105,7 +108,59 @@
                 
                 
             </article>
-            <article><!--검색창과 카테고리 이미지 나올곳-->
+            <article>
+              <body onLoad="initClock()">
+
+                <div id="timedate">
+                  <a id="mon">January</a>
+                  <a id="d">1</a>,
+                  <a id="y">0</a><br />
+                  <a id="h">12</a> :
+                  <a id="m">00</a>:
+                  <a id="s">00</a>:
+                  <a id="mi">000</a>
+                  <style>
+                    body {background-color:#2d2d2d;}
+
+#timedate {
+  font: small-caps lighter 43px/150% "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  text-align:left;
+  width: 50%;
+  margin: 40px auto;
+  color:#fff;
+  border-left: 3px solid #ed1f24;
+  padding: 20px;
+}
+                  </style>
+                  <script>
+                    Number.prototype.pad = function(n) {
+  for (var r = this.toString(); r.length < n; r = 0 + r);
+  return r;
+};
+
+function updateClock() {
+  var now = new Date();
+  var milli = now.getMilliseconds(),
+    sec = now.getSeconds(),
+    min = now.getMinutes(),
+    hou = now.getHours(),
+    mo = now.getMonth(),
+    dy = now.getDate(),
+    yr = now.getFullYear();
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var tags = ["mon", "d", "y", "h", "m", "s", "mi"],
+    corr = [months[mo], dy, yr, hou.pad(2), min.pad(2), sec.pad(2), milli];
+  for (var i = 0; i < tags.length; i++)
+    document.getElementById(tags[i]).firstChild.nodeValue = corr[i];
+}
+
+function initClock() {
+  updateClock();
+  window.setInterval("updateClock()", 1);
+}
+                  </script>
+                </div>
+              <!--검색창과 카테고리 이미지 나올곳-->
               
               <!--Container class for slideshow-->
               <style>
@@ -267,12 +322,11 @@ function showSlides(n) {
   captionText.innerHTML = dots[slideIndex-1].alt;
 }
 </script>
+
+
             <article><!--인기순 조회순 등의 순으로 모집글이 나올곳-->
 
             </article>
-            <div class="container">
-              <input type="text" placeholder="검색...">
-              <div class="search"></div>
             </div>
             </div>
             <style>
@@ -283,7 +337,7 @@ function showSlides(n) {
 
         <footer><!--회사정보가 나올곳 ex) copyright-->
             <aside>
-                <a class="" href="">개인정보처리방침</a>
+                <a class="persoalInfo" href="personalInfoTbl.html">개인정보처리방침</a>
                 <ul class="copy_menu">
                     <li>사업자등록번호 : XXXX</li>
                     <li>(주)사람모집</li>
